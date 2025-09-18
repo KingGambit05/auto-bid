@@ -26,7 +26,7 @@ export default function LandingPage() {
       year: "2019",
       make: "Porsche",
       model: "911 GT3",
-      image: "/api/placeholder/400/300",
+      image: "cars/porsche.jpg",
       currentBid: 145000,
       timeLeft: "2d 14h 32m",
       bids: 47,
@@ -39,7 +39,7 @@ export default function LandingPage() {
       year: "1967",
       make: "Ford",
       model: "Mustang Shelby GT500",
-      image: "/api/placeholder/400/300",
+      image: "cars/ford-mustang.jpg",
       currentBid: 89500,
       timeLeft: "5d 8h 15m",
       bids: 23,
@@ -52,7 +52,7 @@ export default function LandingPage() {
       year: "2021",
       make: "McLaren",
       model: "720S",
-      image: "/api/placeholder/400/300",
+      image: "cars/mclaren.jpg",
       currentBid: 267000,
       timeLeft: "1d 6h 44m",
       bids: 31,
@@ -171,7 +171,7 @@ export default function LandingPage() {
               <div className="relative">
                 <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden">
                   <img 
-                    src="/api/placeholder/600/450" 
+                    src="cars/bugatti.jpg" 
                     alt="Featured luxury car"
                     className="w-full h-full object-cover"
                   />

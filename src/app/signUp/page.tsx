@@ -1,7 +1,11 @@
-export default function signUpPage() {
+export const metadata = { title: "Sign Up" };
+
+import SignUpPage from "./SignUpForm";
+
+export default function page() {
   return (
     <>
-      <h1>Hello this is SignUp page</h1>
+      <SignUpPage />
     </>
   );
 }

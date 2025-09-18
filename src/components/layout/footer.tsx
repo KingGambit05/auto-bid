@@ -61,7 +61,7 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center space-x-2 mb-4">
               <Gavel className="h-8 w-8 text-white" />
-              <span className="text-xl font-bold">AuctionHub</span>
+              <span className="text-xl font-bold">AutoBID</span>
             </Link>
             <p className="text-gray-400 mb-6 max-w-sm">
               The world's leading online car auction platform. Buy and sell premium vehicles with confidence and transparency.
@@ -75,7 +75,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2 text-gray-400">
                 <Mail className="h-4 w-4" />
-                <span className="text-sm">support@auctionhub.com</span>
+                <span className="text-sm">support@autobid.com</span>
               </div>
               <div className="flex items-center space-x-2 text-gray-400">
                 <MapPin className="h-4 w-4" />
@@ -131,7 +131,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Copyright */}
             <p className="text-gray-400 text-sm">
-              © {currentYear} AuctionHub. All rights reserved.
+              © {currentYear} AutoBID. All rights reserved.
             </p>
 
             {/* Social Links */}

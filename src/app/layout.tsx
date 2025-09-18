@@ -8,10 +8,10 @@ import Footer from "@/components/layout/footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AuctionHub - Premium Car Auctions",
+  title: "AutoBID - Premium and Secured Car Auctions",
   description: "The world's leading online car auction platform. Buy and sell premium vehicles with confidence.",
-  keywords: ["car auction", "vehicle sales", "premium cars", "online bidding"],
-  authors: [{ name: "AuctionHub Team" }],
+  keywords: ["car auction", "vehicle sales", "premium cars", "online bidding", "secure auctions"],
+  authors: [{ name: "AIMSA Horizon Developers" }],
   viewport: "width=device-width, initial-scale=1",
 };
 

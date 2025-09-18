@@ -121,8 +121,8 @@ export default function AboutPage() {
               About AuctionHub
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed">
-              We're revolutionizing the way people buy and sell cars through transparent, 
-              secure, and accessible online auctions. Our mission is to create the world's 
+              We&apos;re revolutionizing the way people buy and sell cars through transparent, 
+              secure, and accessible online auctions. Our mission is to create the world&apos;s 
               most trusted automotive marketplace.
             </p>
           </div>
@@ -186,7 +186,7 @@ export default function AboutPage() {
               Our Impact in Numbers
             </h2>
             <p className="text-xl text-gray-300">
-              See how we're transforming the automotive auction industry.
+              See how we&apos;re transforming the automotive auction industry.
             </p>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
@@ -241,7 +241,7 @@ export default function AboutPage() {
               Our Journey
             </h2>
             <p className="text-lg text-gray-600">
-              From startup to industry leader – here's how we've grown.
+              From startup to industry leader – here&apos;s how we&apos;ve grown.
             </p>
           </div>
           
@@ -304,7 +304,7 @@ export default function AboutPage() {
             Want to Learn More?
           </h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            We'd love to hear from you. Get in touch with our team to learn more about 
+            We&apos;d love to hear from you. Get in touch with our team to learn more about 
             AuctionHub and how we can help you.
           </p>
           

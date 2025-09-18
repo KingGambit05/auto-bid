@@ -47,7 +47,7 @@ const Navbar = () => {
             onClick={() => setIsOpen(false)}
           >
             <Gavel className="h-8 w-8 text-black group-hover:rotate-12 transition-transform duration-300" />
-            <span className="text-xl font-bold text-black">AuctionHub</span>
+            <span className="text-xl font-bold text-black">AutoBID</span>
           </Link>
 
           {/* Desktop Navigation */}

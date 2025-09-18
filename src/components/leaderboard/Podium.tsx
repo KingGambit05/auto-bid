@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 // components/leaderboard/Podium.tsx
 import React from "react";
 import { Seller, Buyer, LeaderboardCategory } from "@/types/leaderboard";

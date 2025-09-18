@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 // components/leaderboard/BuyerTable.tsx
 import React from "react";
 import { Buyer } from "@/types/leaderboard";

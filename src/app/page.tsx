@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @next/next/no-img-element */
 // app/page.tsx - Landing Page
 import React from "react";
 import Link from "next/link";
@@ -340,7 +342,7 @@ export default function LandingPage() {
                   ))}
                 </div>
                 
-                <p className="text-gray-700 mb-6 leading-relaxed">"{testimonial.text}"</p>
+                <p className="text-gray-700 mb-6 leading-relaxed">&quot;{testimonial.text}&quot;</p>
                 
                 <div className="flex items-center">
                   <img 

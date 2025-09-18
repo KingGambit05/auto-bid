@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 // components/leaderboard/RecentSales.tsx
 import React from "react";
 import { HighValueSale } from "@/types/leaderboard";

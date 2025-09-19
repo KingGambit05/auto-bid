@@ -1,5 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 // components/leaderboard/SellerTable.tsx
 import React from "react";
+import Image from "next/image";
 import { Seller } from "@/types/leaderboard";
 import { getRankIcon, getChangeIndicator } from "@/utils/leaderboard";
 
@@ -45,9 +47,11 @@ const SellerTable: React.FC<SellerTableProps> = ({ sellers }) => {
             </td>
             <td className="px-6 py-4 whitespace-nowrap">
               <div className="flex items-center">
-                <img
+                <Image
                   src={seller.avatar}
                   alt={seller.name}
+                  width={40}
+                  height={40}
                   className="w-10 h-10 bg-gray-300 rounded-full mr-4 object-cover"
                 />
                 <div>

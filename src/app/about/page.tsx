@@ -1,18 +1,15 @@
 // app/about/page.tsx - About Page
 import React from "react";
+import Image from "next/image";
 import { 
   Users, 
   Target, 
-  Award, 
   Shield, 
-  Globe, 
-  TrendingUp, 
+  Globe,  
   Heart, 
   Lightbulb,
   CheckCircle,
-  Calendar,
   Building,
-  MapPin
 } from "lucide-react";
 
 export default function AboutPage() {
@@ -163,9 +160,16 @@ export default function AboutPage() {
             </div>
             <div className="relative">
               <div className="aspect-[4/3] bg-gray-200 rounded-2xl overflow-hidden">
-                <img 
+                {/* <img 
                   src="/api/placeholder/600/450" 
                   alt="Team at work"
+                  className="w-full h-full object-cover"
+                /> */}
+                <Image
+                  src="/api/placeholder/600/450" 
+                  alt="Team at work"
+                  width={40}
+                  height={40}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -282,9 +286,11 @@ export default function AboutPage() {
             {team.map((member, index) => (
               <div key={index} className="text-center group">
                 <div className="relative mb-6">
-                  <img 
+                  <Image
                     src={member.image} 
                     alt={member.name}
+                    width={40}
+                    height={40}
                     className="w-48 h-48 bg-gray-300 rounded-xl mx-auto object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>

@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @next/next/no-img-element */
 // app/page.tsx - Landing Page
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { 
-  Search, 
   Gavel, 
   Trophy, 
   Shield, 
@@ -170,9 +172,16 @@ export default function LandingPage() {
             <div className="order-1 lg:order-2 relative">
               <div className="relative">
                 <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl overflow-hidden">
-                  <img 
+                  {/* <img 
                     src="cars/bugatti.jpg" 
                     alt="Featured luxury car"
+                    className="w-full h-full object-cover"
+                  /> */}
+                  <Image
+                    src="cars/bugatti.jpg"
+                    alt="Featured luxury car"
+                    width={40}
+                    height={40}
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -233,9 +242,16 @@ export default function LandingPage() {
                 )} */}
                 
                 <div className="relative aspect-[4/3] bg-gray-200 overflow-hidden">
-                  <img 
+                  {/* <img 
                     src={auction.image} 
                     alt={auction.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  /> */}
+                  <Image
+                    src={auction.image}
+                    alt={auction.title}
+                    width={40}
+                    height={40}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute top-4 right-4 bg-black/70 text-white px-2 py-1 rounded text-xs">
@@ -340,12 +356,19 @@ export default function LandingPage() {
                   ))}
                 </div>
                 
-                <p className="text-gray-700 mb-6 leading-relaxed">"{testimonial.text}"</p>
+                <p className="text-gray-700 mb-6 leading-relaxed">&quot;{testimonial.text}&quot;</p>
                 
                 <div className="flex items-center">
-                  <img 
+                  {/* <img 
                     src={testimonial.image} 
                     alt={testimonial.name}
+                    className="w-12 h-12 bg-gray-300 rounded-full mr-4"
+                  /> */}
+                  <Image
+                    src={testimonial.image} 
+                    alt={testimonial.name}
+                    width={40}
+                    height={40}
                     className="w-12 h-12 bg-gray-300 rounded-full mr-4"
                   />
                   <div>

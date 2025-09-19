@@ -1,5 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 // components/leaderboard/RecentSales.tsx
 import React from "react";
+import Image from "next/image";
 import { HighValueSale } from "@/types/leaderboard";
 
 interface RecentSalesProps {
@@ -29,9 +31,11 @@ const RecentSales: React.FC<RecentSalesProps> = ({ sales }) => {
                 key={index} 
                 className="p-6 flex items-center space-x-6 hover:bg-gray-50 transition-colors duration-200"
               >
-                <img
+                <Image
                   src={sale.image}
                   alt={sale.vehicle}
+                  width={40}
+                  height={40}
                   className="w-16 h-12 bg-gray-300 rounded-lg object-cover flex-shrink-0"
                 />
                 <div className="flex-1 min-w-0">

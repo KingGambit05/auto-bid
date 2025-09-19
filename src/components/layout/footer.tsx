@@ -64,7 +64,7 @@ const Footer = () => {
               <span className="text-xl font-bold">AutoBID</span>
             </Link>
             <p className="text-gray-400 mb-6 max-w-sm">
-              The world's leading online car auction platform. Buy and sell premium vehicles with confidence and transparency.
+              The world&apos;s leading online car auction platform. Buy and sell premium vehicles with confidence and transparency.
             </p>
             
             {/* Contact Info */}
@@ -85,7 +85,7 @@ const Footer = () => {
           </div>
 
           {/* Footer Links */}
-          {footerSections.map((section, index) => (
+          {footerSections.map((section) => (
             <div key={section.title}>
               <h3 className="font-semibold text-white mb-4">{section.title}</h3>
               <ul className="space-y-2">

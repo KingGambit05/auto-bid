@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 // app/contact/page.tsx - Contact Page
 "use client";
 

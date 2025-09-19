@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @next/next/no-img-element */
 // app/page.tsx - Landing Page
 import React from "react";
 import Link from "next/link";

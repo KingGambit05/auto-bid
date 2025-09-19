@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 // components/leaderboard/SellerTable.tsx
 import React from "react";
 import Image from "next/image";

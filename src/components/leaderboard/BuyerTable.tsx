@@ -1,5 +1,6 @@
 // components/leaderboard/BuyerTable.tsx
 import React from "react";
+import Image from "next/image";
 import { Buyer } from "@/types/leaderboard";
 import { getRankIcon, getChangeIndicator } from "@/utils/leaderboard";
 
@@ -45,9 +46,16 @@ const BuyerTable: React.FC<BuyerTableProps> = ({ buyers }) => {
             </td>
             <td className="px-6 py-4 whitespace-nowrap">
               <div className="flex items-center">
-                <img
+                {/* <img
                   src={buyer.avatar}
                   alt={buyer.name}
+                  className="w-10 h-10 bg-gray-300 rounded-full mr-4 object-cover"
+                /> */}
+                <Image
+                  src={buyer.avatar}
+                  alt={buyer.name}
+                  width={40}
+                  height={40}
                   className="w-10 h-10 bg-gray-300 rounded-full mr-4 object-cover"
                 />
                 <div>

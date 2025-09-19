@@ -1,5 +1,6 @@
 // components/leaderboard/Podium.tsx
 import React from "react";
+import Image from "next/image";
 import { Seller, Buyer, LeaderboardCategory } from "@/types/leaderboard";
 import { getRankIcon } from "@/utils/leaderboard";
 
@@ -22,9 +23,11 @@ const Podium: React.FC<PodiumProps> = ({ data, category }) => {
         return (
           <div key={userData.rank} className="text-center">
             <div className="relative mb-4">
-              <img
+              <Image
                 src={userData.avatar}
                 alt={userData.name}
+                width={40}
+                height={40}
                 className="w-20 h-20 bg-gray-300 rounded-full mx-auto object-cover border-4 border-white shadow-lg"
               />
               {userData.verified && (

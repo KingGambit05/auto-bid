@@ -12,7 +12,6 @@ import {
   HelpCircle,
   Shield,
   Building,
-  Users,
   CheckCircle,
   AlertCircle
 } from "lucide-react";
@@ -123,7 +122,8 @@ export default function ContactPage() {
         message: ""
       });
     } catch (error) {
-      setSubmitStatus("error");
+      setSubmitStatus(`error`);
+      console.error("Form submission error:", error);
     } finally {
       setIsSubmitting(false);
     }

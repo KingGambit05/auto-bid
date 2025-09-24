@@ -216,6 +216,8 @@ export default function HowItWorksPage() {
                       <Image
                         src="/api/placeholder/600/400" 
                         alt={`Step ${step.number}`}
+                        height={1000}
+                        width={1000}
                         className="w-full rounded-2xl shadow-lg"
                       />
                       <div className="absolute -top-4 -left-4 w-12 h-12 bg-black text-white rounded-full flex items-center justify-center text-xl font-bold">

@@ -2,6 +2,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { 
   Search, 
   Filter, 
@@ -40,8 +41,8 @@ export default function AuctionsPage() {
       year: 2019,
       make: "Porsche",
       model: "911 GT3",
-      image: "/api/placeholder/400/300",
-      images: ["/api/placeholder/400/300", "/api/placeholder/400/300"],
+      image: "/cars/porsche.jpg",
+      images: ["/cars/porsche.jpg", "/cars/porsche.jpg"],
       currentBid: 145000,
       reserveMet: true,
       timeLeft: "2d 14h 32m",
@@ -61,8 +62,8 @@ export default function AuctionsPage() {
       year: 1967,
       make: "Ford",
       model: "Mustang Shelby GT500",
-      image: "/api/placeholder/400/300",
-      images: ["/api/placeholder/400/300"],
+      image: "/cars/ford-mustang.jpg",
+      images: ["/cars/ford-mustang.jpg"],
       currentBid: 89500,
       reserveMet: false,
       timeLeft: "5d 8h 15m",
@@ -82,8 +83,8 @@ export default function AuctionsPage() {
       year: 2021,
       make: "McLaren",
       model: "720S",
-      image: "/api/placeholder/400/300",
-      images: ["/api/placeholder/400/300", "/api/placeholder/400/300"],
+      image: "/cars/mclaren.jpg",
+      images: ["/cars/mclaren.jpg", "/cars/mclaren.jpg"],
       currentBid: 267000,
       reserveMet: true,
       timeLeft: "1d 6h 44m",
@@ -103,8 +104,8 @@ export default function AuctionsPage() {
       year: 1969,
       make: "Dodge",
       model: "Charger R/T",
-      image: "/api/placeholder/400/300",
-      images: ["/api/placeholder/400/300"],
+      image: "/cars/dodge.jpg",
+      images: ["/cars/dodge.jpg"],
       currentBid: 78500,
       reserveMet: false,
       timeLeft: "3d 12h 20m",
@@ -124,8 +125,8 @@ export default function AuctionsPage() {
       year: 2020,
       make: "Tesla",
       model: "Model S Performance",
-      image: "/api/placeholder/400/300",
-      images: ["/api/placeholder/400/300"],
+      image: "/cars/tesla.jpg",
+      images: ["/cars/tesla.jpg"],
       currentBid: 67900,
       reserveMet: true,
       timeLeft: "4d 18h 35m",
@@ -145,8 +146,8 @@ export default function AuctionsPage() {
       year: 1963,
       make: "Chevrolet",
       model: "Corvette Split Window",
-      image: "/api/placeholder/400/300",
-      images: ["/api/placeholder/400/300", "/api/placeholder/400/300"],
+      image: "/cars/chevrolet.jpg",
+      images: ["/cars/chevrolet.jpg", "/cars/chevrolet.jpg"],
       currentBid: 125000,
       reserveMet: false,
       timeLeft: "6d 9h 12m",
@@ -424,9 +425,11 @@ export default function AuctionsPage() {
                       </div>
                     </div>
                     
-                    <img 
+                    <Image 
                       src={auction.image} 
                       alt={auction.title}
+                      height={1000}
+                      width={1000}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                     
@@ -502,9 +505,11 @@ export default function AuctionsPage() {
                             Featured
                           </div>
                         )}
-                        <img 
+                        <Image 
                           src={auction.image} 
                           alt={auction.title}
+                          height={1000}
+                          width={1000}
                           className="w-full h-full object-cover"
                         />
                         {!auction.reserveMet && (

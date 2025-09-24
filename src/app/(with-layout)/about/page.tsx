@@ -166,10 +166,10 @@ export default function AboutPage() {
                   className="w-full h-full object-cover"
                 /> */}
                 <Image
-                  src="/api/placeholder/600/450" 
+                  src="/about/handshake.jpg" 
+                  width={1000}
+                  height={1000}
                   alt="Team at work"
-                  width={40}
-                  height={40}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -289,8 +289,8 @@ export default function AboutPage() {
                   <Image
                     src={member.image} 
                     alt={member.name}
-                    width={40}
-                    height={40}
+                    width={1000}
+                    height={1000}
                     className="w-48 h-48 bg-gray-300 rounded-xl mx-auto object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>

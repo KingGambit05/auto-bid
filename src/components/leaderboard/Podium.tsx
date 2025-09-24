@@ -27,8 +27,8 @@ const Podium: React.FC<PodiumProps> = ({ data, category }) => {
               <Image
                 src={userData.avatar}
                 alt={userData.name}
-                width={40}
-                height={40}
+                width={1000}
+                height={1000}
                 className="w-20 h-20 bg-gray-300 rounded-full mx-auto object-cover border-4 border-white shadow-lg"
               />
               {userData.verified && (

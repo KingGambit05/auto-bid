@@ -2,8 +2,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/navbar";
-import Footer from "@/components/layout/footer";
+
+import { AuthProvider } from '@/hooks/useAuth';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,11 +23,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body className={`${inter.className} antialiased`}>
+        <AuthProvider>
         <div className="flex min-h-screen flex-col">
-          <Navbar />
+          
           <main className="flex-1">{children}</main>
-          <Footer />
+          
         </div>
+        </AuthProvider>
       </body>
     </html>
   );

@@ -55,8 +55,8 @@ const BuyerTable: React.FC<BuyerTableProps> = ({ buyers }) => {
                 <Image
                   src={buyer.avatar}
                   alt={buyer.name}
-                  width={40}
-                  height={40}
+                  width={1000}
+                  height={1000}
                   className="w-10 h-10 bg-gray-300 rounded-full mr-4 object-cover"
                 />
                 <div>

@@ -34,8 +34,8 @@ const RecentSales: React.FC<RecentSalesProps> = ({ sales }) => {
                 <Image
                   src={sale.image}
                   alt={sale.vehicle}
-                  width={40}
-                  height={40}
+                  width={1000}
+                  height={1000}
                   className="w-16 h-12 bg-gray-300 rounded-lg object-cover flex-shrink-0"
                 />
                 <div className="flex-1 min-w-0">

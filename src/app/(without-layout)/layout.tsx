@@ -1,11 +1,9 @@
-export default function Layout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+import { AuthProvider } from "@/hooks/useAuth";
+
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div>
-      {children}
+      <AuthProvider>{children}</AuthProvider>
     </div>
-  )
+  );
 }

@@ -1,99 +1,47 @@
-// app/login/page.tsx
 "use client";
 
-import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useAuth, demoLogin } from "@/hooks/useAuth";
-import { Eye, EyeOff, Gavel, AlertCircle } from "lucide-react";
+import { Gavel, AlertCircle, EyeOff, Eye } from "lucide-react";
+import { useState } from "react";
+import { useAuth } from "@/hooks/useAuth";
 
-export default function LoginPage() {
-  const [formData, setFormData] = useState({
+export default function RegisterPage() {
+  const { register, isLoading, error } = useAuth();
+
+  interface RegisterFormData {
+    email: string;
+    password: string;
+    firstName?: string;
+    lastName?: string;
+    confirmPassword?: string;
+    acceptTerms?: boolean;
+  }
+
+  const [formData, setFormData] = useState<RegisterFormData>({
     email: "",
     password: "",
-    rememberMe: false,
   });
+
   const [showPassword, setShowPassword] = useState(false);
   const [validationErrors, setValidationErrors] = useState<
     Record<string, string>
   >({});
 
-  const { login, isLoading, error, clearError, isAuthenticated } = useAuth();
-  const router = useRouter();
-
-  // Redirect if already authenticated
-  useEffect(() => {
-    if (isAuthenticated) {
-      // router.push("/dashboard");
-    }
-  }, [isAuthenticated, router]);
-
-  // Clear error when form data changes
-  useEffect(() => {
-    if (error) {
-      clearError();
-    }
-  }, [formData, clearError]);
-
-  const validateForm = () => {
-    const errors: Record<string, string> = {};
-
-    if (!formData.email) {
-      errors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      errors.email = "Please enter a valid email address";
-    }
-
-    if (!formData.password) {
-      errors.password = "Password is required";
-    } else if (formData.password.length < 6) {
-      errors.password = "Password must be at least 6 characters";
-    }
-
-    setValidationErrors(errors);
-    return Object.keys(errors).length === 0;
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!validateForm()) {
-      return;
-    }
-
-    try {
-      await login({
-        email: formData.email,
-        password: formData.password,
-        rememberMe: formData.rememberMe,
-      });
-    } catch (err) {
-      // Error is handled by the auth hook
-    }
-  };
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-
-    // Clear validation error for this field
-    if (validationErrors[name]) {
-      setValidationErrors((prev) => ({
-        ...prev,
-        [name]: "",
-      }));
-    }
-  };
-
-  const fillDemoCredentials = () => {
-    setFormData({
-      email: demoLogin.email,
-      password: demoLogin.password,
-      rememberMe: true,
-    });
+    await register({
+      email: formData.email,
+      password: formData.password,
+      firstName: "", // dummy
+      lastName: "", // dummy
+      confirmPassword: formData.password, // just match password
+      acceptTerms: true, // default
+    }); // call supabase register from useAuth
   };
 
   return (
@@ -114,14 +62,13 @@ export default function LoginPage() {
             Welcome back
           </h2>
           <p className="text-gray-600">
-            Sign in to your account to start bidding
+            Sign up to your account to start bidding
           </p>
         </div>
       </div>
 
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-6 px-4 sm:py-8 sm:px-6 shadow-sm sm:rounded-xl border border-gray-200">
-          {/* Demo Login Helper */}
           <div className="mb-6 p-3 bg-blue-50 border border-blue-200 rounded-lg">
             <div className="flex items-start space-x-2">
               <div className="flex-shrink-0">
@@ -144,7 +91,6 @@ export default function LoginPage() {
                 </p>
                 <button
                   type="button"
-                  onClick={fillDemoCredentials}
                   className="text-xs bg-blue-600 text-white px-2 py-1 rounded hover:bg-blue-700 transition-colors duration-200"
                 >
                   Fill Demo Login
@@ -153,7 +99,6 @@ export default function LoginPage() {
             </div>
           </div>
 
-          {/* Error Alert */}
           {error && (
             <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg flex items-start space-x-3">
               <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
@@ -166,7 +111,6 @@ export default function LoginPage() {
             </div>
           )}
 
-          {/* Login Form */}
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Email Field */}
             <div>
@@ -182,10 +126,8 @@ export default function LoginPage() {
                 type="email"
                 autoComplete="email"
                 value={formData.email}
-                onChange={handleInputChange}
-                className={`w-full px-3 py-2 border rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-colors duration-200 ${
-                  validationErrors.email ? "border-red-300" : "border-gray-300"
-                }`}
+                onChange={handleChange}
+                className={`w-full px-3 py-2 border rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-colors `}
                 placeholder="Enter your email"
               />
               {validationErrors.email && (
@@ -210,12 +152,8 @@ export default function LoginPage() {
                   type={showPassword ? "text" : "password"}
                   autoComplete="current-password"
                   value={formData.password}
-                  onChange={handleInputChange}
-                  className={`w-full px-3 py-2 pr-10 border rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-colors duration-200 ${
-                    validationErrors.password
-                      ? "border-red-300"
-                      : "border-gray-300"
-                  }`}
+                  onChange={handleChange}
+                  className={`w-full px-3 py-2 pr-10 border rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-colors`}
                   placeholder="Enter your password"
                 />
                 <button
@@ -244,8 +182,8 @@ export default function LoginPage() {
                   id="rememberMe"
                   name="rememberMe"
                   type="checkbox"
-                  checked={formData.rememberMe}
-                  onChange={handleInputChange}
+                  //   checked={formData.rememberMe}
+                  //   onChange={handleInputChange}
                   className="h-4 w-4 text-black focus:ring-black border-gray-300 rounded"
                 />
                 <label
@@ -270,25 +208,18 @@ export default function LoginPage() {
               disabled={isLoading}
               className="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-sm font-medium text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-200"
             >
-              {isLoading ? (
-                <div className="flex items-center space-x-2">
-                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                  <span>Signing in...</span>
-                </div>
-              ) : (
-                "Sign in"
-              )}
+              {isLoading ? "Registering..." : "Register"}
             </button>
 
             {/* Sign Up Link */}
             <div className="text-center">
               <p className="text-sm text-gray-600">
-                Don&apos;t have an account?{" "}
+                Already have an account?{" "}
                 <Link
-                  href="/register"
+                  href="/login"
                   className="font-medium text-black hover:text-gray-700"
                 >
-                  Sign up for free
+                  Login
                 </Link>
               </p>
             </div>

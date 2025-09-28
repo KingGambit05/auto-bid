@@ -55,25 +55,25 @@ export default function AboutPage() {
     {
       name: "Sarah Chen",
       role: "CEO & Co-Founder",
-      image: "/api/placeholder/300/300",
+      image: "/leaderboard/avatar-placeholder.jpg",
       bio: "Former automotive executive with 15+ years in the industry. Passionate about bringing transparency to car auctions."
     },
     {
       name: "Michael Rodriguez",
       role: "CTO & Co-Founder",
-      image: "/api/placeholder/300/300",
+      image: "/leaderboard/avatar-placeholder.jpg",
       bio: "Technology veteran who previously built auction platforms for major tech companies. Expert in real-time systems."
     },
     {
       name: "Emily Johnson",
       role: "Head of Operations",
-      image: "/api/placeholder/300/300",
+      image: "/leaderboard/avatar-placeholder.jpg",
       bio: "Operations specialist with a background in logistics and marketplace management. Ensures smooth auction processes."
     },
     {
       name: "David Park",
       role: "Head of Trust & Safety",
-      image: "/api/placeholder/300/300",
+      image: "/leaderboard/avatar-placeholder.jpg",
       bio: "Former law enforcement with expertise in fraud prevention and digital security. Keeps our platform safe."
     }
   ];
@@ -250,19 +250,27 @@ export default function AboutPage() {
           </div>
           
           <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-0.5 h-full w-0.5 bg-gray-300"></div>
-            <div className="space-y-12">
+            {/* Vertical center line only on larger screens */}
+            <div className="hidden lg:block absolute left-1/2 transform -translate-x-0.5 h-full w-0.5 bg-gray-300" />
+            <div className="space-y-8">
               {milestones.map((milestone, index) => (
-                <div key={index} className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
-                  <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
+                <div
+                  key={index}
+                  className={`flex flex-col lg:items-center ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
+                >
+                  <div className={`w-full lg:w-1/2 ${index % 2 === 0 ? 'lg:pr-8 lg:text-right' : 'lg:pl-8 lg:text-left'}`}>
                     <div className="bg-white p-6 rounded-xl shadow-sm border">
                       <div className="text-sm font-medium text-gray-500 mb-1">{milestone.year}</div>
                       <h3 className="text-xl font-semibold text-black mb-2">{milestone.title}</h3>
                       <p className="text-gray-600">{milestone.description}</p>
                     </div>
                   </div>
-                  <div className="w-4 h-4 bg-black rounded-full border-4 border-white shadow-md z-10 flex-shrink-0"></div>
-                  <div className="w-1/2"></div>
+
+                  <div className="flex items-center justify-center my-4 lg:my-0">
+                    <div className="w-4 h-4 bg-black rounded-full border-4 border-white shadow-md z-10 flex-shrink-0" />
+                  </div>
+
+                  <div className="w-full lg:w-1/2" />
                 </div>
               ))}
             </div>
@@ -282,19 +290,19 @@ export default function AboutPage() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {team.map((member, index) => (
               <div key={index} className="text-center group">
-                <div className="relative mb-6">
+                <div className="relative mb-6 w-36 h-36 sm:w-44 sm:h-44 mx-auto">
                   <Image
-                    src={member.image} 
+                    src={member.image}
                     alt={member.name}
-                    width={1000}
-                    height={1000}
-                    className="w-48 h-48 bg-gray-300 rounded-xl mx-auto object-cover group-hover:scale-105 transition-transform duration-300"
+                    width={176}
+                    height={176}
+                    className="w-full h-full bg-gray-300 rounded-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
-                <h3 className="text-xl font-semibold text-black mb-1">{member.name}</h3>
+                <h3 className="text-lg sm:text-xl font-semibold text-black mb-1">{member.name}</h3>
                 <div className="text-sm font-medium text-gray-500 mb-3">{member.role}</div>
                 <p className="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
               </div>

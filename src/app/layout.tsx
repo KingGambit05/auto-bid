@@ -4,6 +4,8 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import { AuthProvider } from '@/hooks/useAuth';
+import { ThemeProvider } from '@/hooks/useTheme';
+// import NavbarController from "@/components/layout/NavbarController";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,11 +26,11 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body className={`${inter.className} antialiased`}>
         <AuthProvider>
-        <div className="flex min-h-screen flex-col">
-          
-          <main className="flex-1">{children}</main>
-          
-        </div>
+          <ThemeProvider>
+            <div className="flex min-h-screen flex-col">
+              <main className="flex-1">{children}</main>
+            </div>
+          </ThemeProvider>
         </AuthProvider>
       </body>
     </html>

@@ -4,13 +4,15 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Gavel, Menu, X, User, Bell, ChevronDown } from "lucide-react";
+import { Gavel, Menu, X, User, Bell, ChevronDown, Sun, Moon } from "lucide-react";
+import { useTheme } from '@/hooks/useTheme';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showUserMenu, setShowUserMenu] = useState(false);
   const pathname = usePathname();
+  const { isDark, toggle } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -130,6 +132,9 @@ const Navbar = () => {
               <button className="p-2 text-gray-600 hover:text-black hover:bg-gray-100 rounded-lg transition-colors duration-200">
                 <Bell className="h-5 w-5" />
               </button>
+              {/* <button onClick={toggle} className="p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                {isDark ? <Sun className="h-5 w-5 text-yellow-400" /> : <Moon className="h-5 w-5 text-gray-600" />}
+              </button> */}
               
               {/* User Menu */}
               <div className="relative">
@@ -159,19 +164,11 @@ const Navbar = () => {
                       Sign Up
                     </Link>
                     <hr className="my-1" />
-                    <Link
-                      href="/dashboard"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      onClick={handleLinkClick}
-                    >
-                      Dashboard
-                    </Link>
                   </div>
                 )}
               </div>
-              
               <Link
-                href="/signup"
+                href="/register"
                 className="px-4 xl:px-6 py-2 text-sm xl:text-base font-medium bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-200"
               >
                 Get Started
@@ -222,22 +219,26 @@ const Navbar = () => {
 
               {/* Mobile Actions */}
               <div className="px-4 py-4 border-t border-gray-100 space-y-3">
-                <button className="flex items-center w-full px-4 py-3 text-base font-medium text-gray-600 hover:text-black hover:bg-gray-50 rounded-lg transition-colors duration-200">
+                {/* <button className="flex items-center w-full px-4 py-3 text-base font-medium text-gray-600 hover:text-black hover:bg-gray-50 rounded-lg transition-colors duration-200">
                   <Bell className="h-5 w-5 mr-3" />
                   Notifications
-                </button>
+                </button> */}
+                {/* <button onClick={toggle} className="flex items-center w-full px-4 py-3 text-base font-medium text-gray-600 hover:text-black hover:bg-gray-50 rounded-lg transition-colors duration-200">
+                  {isDark ? <Sun className="h-5 w-5 mr-3 text-yellow-400" /> : <Moon className="h-5 w-5 mr-3" />}
+                  Toggle Theme
+                </button> */}
                 
                 <Link
-                  href="/signin"
+                  href="/login"
                   onClick={handleLinkClick}
                   className="flex items-center w-full px-4 py-3 text-base font-medium text-gray-600 hover:text-black hover:bg-gray-50 rounded-lg transition-colors duration-200"
                 >
                   <User className="h-5 w-5 mr-3" />
                   Sign In
                 </Link>
-                
+
                 <Link
-                  href="/signup"
+                  href="/register"
                   onClick={handleLinkClick}
                   className="block w-full px-4 py-3 text-base font-medium bg-black text-white text-center rounded-lg hover:bg-gray-800 transition-colors duration-200"
                 >

@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @next/next/no-img-element */
 // app/page.tsx - Landing Page
 import React from "react";
 import Link from "next/link";
@@ -97,21 +96,21 @@ export default function LandingPage() {
     {
       name: "Michael Chen",
       role: "Collector",
-      image: "/api/placeholder/60/60",
+      image: "/leaderboard/avatar-placeholder.jpg",
       rating: 5,
       text: "Found my dream 1969 Camaro SS through AuctionHub. The process was transparent and secure."
     },
     {
       name: "Sarah Williams",
       role: "Dealer",
-      image: "/api/placeholder/60/60",
+      image: "/leaderboard/avatar-placeholder.jpg",
       rating: 5,
       text: "As a dealer, I've sold over 200 vehicles on this platform. Excellent service and support."
     },
     {
       name: "David Rodriguez",
       role: "Enthusiast",
-      image: "/api/placeholder/60/60",
+      image: "/leaderboard/avatar-placeholder.jpg",
       rating: 5,
       text: "The bidding experience is smooth and exciting. Highly recommend to any car enthusiast."
     }
@@ -147,10 +146,10 @@ export default function LandingPage() {
                   Browse Auctions
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
-                <button className="inline-flex items-center px-8 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-all duration-300">
+                {/* <button className="inline-flex items-center px-8 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition-all duration-300">
                   <PlayCircle className="mr-2 h-5 w-5" />
                   Watch Demo
-                </button>
+                </button> */}
               </div>
               
               <div className="flex items-center space-x-8 text-sm text-gray-500">
@@ -289,9 +288,15 @@ export default function LandingPage() {
                     </div>
                   </div>
                   
-                  <button className="w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition-colors duration-300">
+                  <Link
+                    href="/login"
+                    className="inline-flex items-center px-8 py-3 bg-black text-white font-medium rounded-lg hover:bg-gray-800 transition-all duration-300 hover-lift"
+                  >
+                    Place bid
+                  </Link>
+                  {/* <button className="w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800 transition-colors duration-300">
                     Place Bid
-                  </button>
+                  </button> */}
                 </div>
               </div>
             ))}

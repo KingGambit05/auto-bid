@@ -21,7 +21,7 @@ export const mockAuctions: Auction[] = [
     condition: 'Excellent',
     seller: 'John Motors',
     sellerRating: 4.8,
-    images: ['/cars/ford-mustang.jpg', '/cars/mclaren.jpg', '/cars/tesla.jpg'],
+    images: ['/cars/toyota.jpg'],
     description: 'Well-maintained 2020 Toyota Camry XLE with full service history. Single owner, garage kept.',
     features: ['Leather Seats', 'Sunroof', 'Navigation', 'Backup Camera', 'Heated Seats'],
     bidHistory: [

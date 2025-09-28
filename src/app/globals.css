@@ -172,3 +172,69 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Dark-mode utility overrides -------------------------------------------------
+   Many components in the project use Tailwind utility classes like `bg-white`,
+   `text-gray-700`, `border-gray-200` etc. Those hardcoded utilities don't
+   automatically map to the CSS variables above. To make dark mode apply more
+   broadly, map common utility classes to the theme variables when `.dark` is
+   present on the root element. These use `!important` to ensure they override
+   the generated Tailwind utilities in dark mode.
+*/
+.dark .bg-white { background-color: var(--card) !important; }
+.dark .bg-white\/95 { background-color: var(--card) !important; opacity: .95 !important; }
+.dark .bg-white\/80 { background-color: var(--card) !important; opacity: .8 !important; }
+.dark .bg-gray-50 { background-color: var(--secondary) !important; }
+.dark .bg-gray-100 { background-color: var(--muted) !important; }
+.dark .bg-gray-200 { background-color: var(--muted) !important; }
+.dark .bg-transparent { background-color: transparent !important; }
+
+.dark .text-gray-900,
+.dark .text-black { color: var(--card-foreground) !important; }
+.dark .text-gray-800,
+.dark .text-gray-700,
+.dark .text-gray-600,
+.dark .text-gray-500 { color: var(--muted-foreground) !important; }
+.dark .text-gray-400 { color: rgba(255,255,255,0.55) !important; }
+.dark .text-white { color: var(--primary-foreground) !important; }
+
+.dark .border-gray-200,
+.dark .border-gray-100,
+.dark .border-white { border-color: var(--border) !important; }
+
+.dark .shadow-sm,
+.dark .shadow { box-shadow: 0 1px 2px rgba(0,0,0,0.3) !important; }
+
+.dark .hover\:bg-gray-100:hover { background-color: var(--muted) !important; }
+.dark .hover\:bg-gray-50:hover { background-color: var(--secondary) !important; }
+
+/* Inputs/buttons that used bg-white or bg-gray */
+.dark input,
+.dark textarea,
+.dark select { background-color: var(--input) !important; color: var(--card-foreground) !important; border-color: var(--border) !important; }
+
+/* Links and primary buttons that use text-black / bg-white mapping */
+.dark a,
+.dark button { color: inherit; }
+
+/* Fallback: ensure body-level background/text are applied */
+.dark body { background-color: var(--background) !important; color: var(--foreground) !important; }
+
+/* Semantic utilities that bind to theme variables. Prefer these in components
+   to avoid having to rely on mapping raw Tailwind colors. Use these classes
+   instead of `bg-white`, `text-gray-700`, `border-gray-200` where possible. */
+@layer utilities {
+  .bg-card { background-color: rgb(var(--card)) !important; }
+  .bg-popover { background-color: rgb(var(--popover)) !important; }
+  .bg-primary { background-color: rgb(var(--primary)) !important; }
+  .bg-secondary { background-color: rgb(var(--secondary)) !important; }
+
+  .text-foreground { color: rgb(var(--foreground)) !important; }
+  .text-card-foreground { color: rgb(var(--card-foreground)) !important; }
+  .text-muted { color: rgb(var(--muted-foreground)) !important; }
+
+  .border-border { border-color: rgb(var(--border)) !important; }
+  .ring-ring { box-shadow: 0 0 0 3px rgb(var(--ring) / 0.12) !important; }
+  .bg-input { background-color: rgb(var(--input)) !important; }
+}
+

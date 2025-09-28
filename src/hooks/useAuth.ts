@@ -146,7 +146,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
             if (isAuthenticated && user) {
               dispatch({ type: 'LOGIN_SUCCESS', payload: user });
             }
-          } catch (error) {
+          } catch {
             localStorage.removeItem('auctionhub_auth');
           }
         }
@@ -157,7 +157,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }, []);
 
   // Mock login function
-  const login = async (credentials: LoginCredentials): Promise<void> => {
+  const login = async (credentials: LoginCredentials): Promise<boolean> => {
     dispatch({ type: 'LOGIN_START' });
 
     try {
@@ -165,7 +165,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       await new Promise(resolve => setTimeout(resolve, 1000));
 
       // Mock validation
-      if (credentials.email === 'demo@auctionhub.com' && credentials.password === 'demo123') {
+      if (credentials.email === 'john.doe@example.com' && credentials.password === 'demo123') {
         const authData = {
           user: mockUser,
           isAuthenticated: true,
@@ -177,14 +177,17 @@ export function AuthProvider({ children }: AuthProviderProps) {
         }
 
         dispatch({ type: 'LOGIN_SUCCESS', payload: mockUser });
+        return true;
       } else {
-        throw new Error('Invalid email or password');
+        dispatch({ type: 'LOGIN_ERROR', payload: 'Invalid email or password' });
+        return false;
       }
-    } catch (error) {
+    } catch {
       dispatch({ 
         type: 'LOGIN_ERROR', 
-        payload: error instanceof Error ? error.message : 'Login failed' 
+        payload: 'Login failed' 
       });
+      return false;
     }
   };
 
@@ -237,10 +240,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
         localStorage.setItem('auctionhub_auth', JSON.stringify(authData));
       }
       dispatch({ type: 'LOGIN_SUCCESS', payload: newUser });
-    } catch (error) {
+    } catch {
       dispatch({ 
         type: 'LOGIN_ERROR', 
-        payload: error instanceof Error ? error.message : 'Registration failed' 
+        payload: 'Registration failed' 
       });
     }
   };
@@ -312,6 +315,6 @@ export function useAuth(): AuthContextType {
 
 // Demo login helper for development
 export const demoLogin = {
-  email: 'demo@auctionhub.com',
+  email: 'john.doe@example.com',
   password: 'demo123',
 };

@@ -1,60 +1,38 @@
 // app/how-it-works/page.tsx - How It Works Page
 import React from "react";
-import Image from "next/image";
-import { 
-  UserPlus, 
-  Search, 
-  Gavel, 
-  CreditCard, 
-  Truck, 
-  Shield, 
-  CheckCircle, 
-  FileText,
-  Camera,
-  Award,
-  Users,
-  Zap,
-  ArrowRight,
-  PlayCircle,
-  HelpCircle
-} from "lucide-react";
+import { Shield, CheckCircle, FileText, Camera, Award, Users, Zap, ArrowRight, HelpCircle, Search, Gavel, CreditCard, Truck } from "lucide-react";
 
 export default function HowItWorksPage() {
-  const buyerSteps = [
+  const steps = [
     {
       number: 1,
-      icon: UserPlus,
       title: "Create Your Account",
-      description: "Sign up for free and verify your identity. Add payment methods for seamless bidding.",
-      details: ["Email verification required", "ID verification for high-value bids", "Secure payment method setup"]
+      description: "Sign up and verify your identity. Add payment methods for seamless bidding.",
+      details: ["Email verification", "Secure payment setup"]
     },
     {
       number: 2,
-      icon: Search,
       title: "Browse & Research",
-      description: "Explore our curated selection of vehicles. Use filters to find exactly what you're looking for.",
-      details: ["Detailed vehicle history reports", "Professional inspection photos", "Seller ratings and reviews"]
+      description: "Explore our curated selection of vehicles and use filters to find the right match.",
+      details: ["Vehicle history reports", "Seller ratings"]
     },
     {
       number: 3,
-      icon: Gavel,
       title: "Place Your Bids",
-      description: "Bid confidently with our real-time auction system. Set maximum bids or bid manually.",
-      details: ["Real-time bidding updates", "Automatic bid increments", "Proxy bidding available"]
+      description: "Bid in real-time or set proxy bids to participate automatically.",
+      details: ["Real-time updates", "Automatic increments"]
     },
     {
       number: 4,
-      icon: CreditCard,
-      title: "Win & Pay",
-      description: "If you win, you'll be notified immediately. Complete payment within 24 hours.",
-      details: ["Instant win notifications", "Secure payment processing", "24-hour payment window"]
+      title: "Win & Complete Payment",
+      description: "If you win, complete payment within the required window using our secure processors.",
+      details: ["Instant notifications", "Secure processing"]
     },
     {
       number: 5,
-      icon: Truck,
       title: "Arrange Delivery",
-      description: "Coordinate with the seller or use our recommended shipping partners for nationwide delivery.",
-      details: ["Vetted shipping partners", "Insurance coverage available", "Door-to-door delivery options"]
+      description: "Coordinate shipping with the seller or use our recommended partners for insured transport.",
+      details: ["Vetted shippers", "Insurance options"]
     }
   ];
 
@@ -160,12 +138,12 @@ export default function HowItWorksPage() {
               our platform makes automotive auctions simple, secure, and successful.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="inline-flex items-center px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300">
+              {/* <button className="inline-flex items-center px-6 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-300">
                 <PlayCircle className="mr-2 h-5 w-5" />
                 Watch Demo Video
-              </button>
+              </button> */}
               <a
-                href="/signup"
+                href="/register"
                 className="inline-flex items-center px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors duration-300"
               >
                 Get Started Free
@@ -176,77 +154,36 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      {/* Process Toggle */}
-      <section className="py-8 bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-center">
-            <div className="flex bg-gray-100 rounded-lg p-1">
-              <button className="px-6 py-3 bg-white text-black font-medium rounded-md shadow-sm">
-                For Buyers
-              </button>
-              <button className="px-6 py-3 text-gray-600 hover:text-black font-medium rounded-md">
-                For Sellers
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Removed buyer/seller toggle - general audience only */}
 
-      {/* Buyer Process */}
+      {/* How It Works - Linear text-only timeline */}
       <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-black mb-4">
-              How to Buy on AuctionHub
-            </h2>
-            <p className="text-lg text-gray-600">
-              Follow these simple steps to find and win your perfect vehicle.
-            </p>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl lg:text-4xl font-bold text-black mb-4">How It Works</h2>
+            <p className="text-lg text-gray-600">A simple step-by-step process for all users.</p>
           </div>
 
-          <div className="space-y-16">
-            {buyerSteps.map((step, index) => {
-              const Icon = step.icon;
-              const isEven = index % 2 === 0;
-              
-              return (
-                <div key={step.number} className={`flex flex-col lg:flex-row items-center gap-12 ${isEven ? '' : 'lg:flex-row-reverse'}`}>
-                  <div className="lg:w-1/2">
-                    <div className="relative">
-                      <Image
-                        src="/api/placeholder/600/400" 
-                        alt={`Step ${step.number}`}
-                        height={1000}
-                        width={1000}
-                        className="w-full rounded-2xl shadow-lg"
-                      />
-                      <div className="absolute -top-4 -left-4 w-12 h-12 bg-black text-white rounded-full flex items-center justify-center text-xl font-bold">
-                        {step.number}
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="lg:w-1/2">
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-xl mb-6">
-                      <Icon className="h-8 w-8 text-black" />
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold text-black mb-4">{step.title}</h3>
-                    <p className="text-lg text-gray-600 mb-6 leading-relaxed">{step.description}</p>
-                    
-                    <ul className="space-y-3">
-                      {step.details.map((detail, idx) => (
-                        <li key={idx} className="flex items-center space-x-3">
-                          <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                          <span className="text-gray-700">{detail}</span>
-                        </li>
+          <ol className="space-y-8">
+            {steps.map((step) => (
+              <li key={step.number} className="flex items-start">
+                <div className="flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center font-semibold mr-4">{step.number}</div>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-black">{step.title}</h3>
+                  <p className="text-gray-600 mt-1">{step.description}</p>
+                  {step.details && (
+                    <ul className="mt-2 text-gray-700 list-disc pl-5 space-y-1">
+                      {step.details.map((d, i) => (
+                        <li key={i}>{d}</li>
                       ))}
                     </ul>
-                  </div>
+                  )}
                 </div>
-              );
-            })}
-          </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 

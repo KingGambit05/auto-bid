@@ -20,11 +20,15 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     // Initialize theme from localStorage or system preference
+    // We want light mode to be the default and take precedence above system
+    // and other values. However, if the user explicitly chose 'dark' before
+    // (saved === 'dark'), respect that explicit choice. Any other saved
+    // value (including 'system' or 'light') will default to 'light'.
     const saved = typeof window !== 'undefined' ? localStorage.getItem('auto_bid_theme') : null;
-    if (saved === 'light' || saved === 'dark' || saved === 'system') {
-      setThemeState(saved as Theme);
+    if (saved === 'dark') {
+      setThemeState('dark');
     } else {
-      setThemeState('system');
+      setThemeState('light');
     }
   }, []);
 
@@ -32,7 +36,8 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     const apply = (t: Theme) => {
       let dark = false;
       if (t === 'system') {
-        dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        // respect the system preference: dark if prefers-color-scheme is dark
+        dark = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       } else {
         dark = t === 'dark';
       }

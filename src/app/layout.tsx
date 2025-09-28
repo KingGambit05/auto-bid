@@ -26,11 +26,9 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body className={`${inter.className} antialiased`}>
         <AuthProvider>
-          <ThemeProvider>
             <div className="flex min-h-screen flex-col">
               <main className="flex-1">{children}</main>
             </div>
-          </ThemeProvider>
         </AuthProvider>
       </body>
     </html>

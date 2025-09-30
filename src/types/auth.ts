@@ -2,17 +2,17 @@
 export interface User {
   id: string;
   email: string;
-  firstName: string;
-  lastName: string;
+  firstName?: string;
+  lastName?: string;
   avatar?: string;
   phone?: string;
-  isVerified: boolean;
-  memberSince: string;
-  role: 'buyer' | 'seller' | 'both';
-  
+  isVerified?: boolean;
+  memberSince?: string;
+  role?: "buyer" | "seller" | "both";
+
   // Profile completion
   profileCompletion: number;
-  
+
   // Preferences
   preferences: {
     notifications: {
@@ -23,11 +23,11 @@ export interface User {
       outbidAlerts: boolean;
       auctionUpdates: boolean;
     };
-    currency: 'USD' | 'EUR' | 'GBP';
+    currency: "USD" | "EUR" | "GBP";
     language: string;
     timezone: string;
   };
-  
+
   // Stats
   stats: {
     totalBids: number;
@@ -37,14 +37,14 @@ export interface User {
     averageBid: number;
     successRate: number;
   };
-  
+
   // Financial
   wallet: {
     balance: number;
     pendingPayments: number;
     availableCredit: number;
   };
-  
+
   // Verification status
   verification: {
     email: boolean;

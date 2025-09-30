@@ -16,6 +16,7 @@ import {
   RegisterData,
 } from "@/types/auth";
 import { supabase } from "@/lib/supabaseClient";
+import { throws } from "assert";
 
 // User database prototype
 
@@ -198,27 +199,47 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     try {
       // Simulate API call delay
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // await new Promise((resolve) => setTimeout(resolve, 1000));
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: credentials.email,
+        password: credentials.password,
+      });
+
+      if (error) throw error;
+
+      const supabaseUser = data.user;
+
+      if (!supabaseUser) throw new Error("No user returned from supabase");
+
+      const authData = {
+        user: supabaseUser,
+        isAuthenticated: true,
+      };
+
+      if (credentials.rememberMe && typeof window !== "undefined") {
+        localStorage.setItem("auctionhub_auth", JSON.stringify(authData));
+      }
 
       // Mock validation
-      if (
-        credentials.email === "demo@auctionhub.com" &&
-        credentials.password === "demo123"
-      ) {
-        const authData = {
-          user: mockUser,
-          isAuthenticated: true,
-        };
+      // if (
+      //   credentials.email === "demo@auctionhub.com" &&
+      //   credentials.password === "demo123"
+      // ) {
+      //   const authData = {
+      //     user: mockUser,
+      //     isAuthenticated: true,
+      //   };
 
-        // Save to localStorage if rememberMe is true
-        if (credentials.rememberMe && typeof window !== "undefined") {
-          localStorage.setItem("auctionhub_auth", JSON.stringify(authData));
-        }
+      //   // Save to localStorage if rememberMe is true
+      //   if (credentials.rememberMe && typeof window !== "undefined") {
+      //     localStorage.setItem("auctionhub_auth", JSON.stringify(authData));
+      //   }
 
-        dispatch({ type: "LOGIN_SUCCESS", payload: mockUser });
-      } else {
-        throw new Error("Invalid email or password");
-      }
+      //   dispatch({ type: "LOGIN_SUCCESS", payload: mockUser });
+      // } else {
+      //   throw new Error("Invalid email or password");
+      // }
+      dispatch({ type: "LOGIN_SUCCESS", payload: mockUser });
     } catch (error) {
       dispatch({
         type: "LOGIN_ERROR",

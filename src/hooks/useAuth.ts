@@ -54,6 +54,106 @@ const mockUser: User = {
   },
 };
 
+// Mock moderator user
+const mockModerator: User = {
+  id: "mod-456",
+  email: "moderator@autobid.com",
+  firstName: "Sarah",
+  lastName: "Wilson",
+  avatar: "/api/placeholder/100/100",
+  phone: "+1 (555) 234-5678",
+  isVerified: true,
+  memberSince: "2022-06-10",
+  role: "moderator",
+  profileCompletion: 100,
+
+  preferences: {
+    notifications: {
+      email: true,
+      sms: true,
+      push: true,
+      bidAlerts: false,
+      outbidAlerts: false,
+      auctionUpdates: true,
+    },
+    currency: "USD",
+    language: "en",
+    timezone: "America/New_York",
+  },
+
+  stats: {
+    totalBids: 0,
+    wonAuctions: 0,
+    activeWatchlist: 0,
+    totalSpent: 0,
+    averageBid: 0,
+    successRate: 0,
+  },
+
+  wallet: {
+    balance: 0,
+    pendingPayments: 0,
+    availableCredit: 0,
+  },
+
+  verification: {
+    email: true,
+    phone: true,
+    identity: true,
+    paymentMethod: true,
+  },
+};
+
+// Mock admin user
+const mockAdmin: User = {
+  id: "admin-789",
+  email: "admin@autobid.com",
+  firstName: "Michael",
+  lastName: "Chen",
+  avatar: "/api/placeholder/100/100",
+  phone: "+1 (555) 345-6789",
+  isVerified: true,
+  memberSince: "2021-03-01",
+  role: "admin",
+  profileCompletion: 100,
+
+  preferences: {
+    notifications: {
+      email: true,
+      sms: true,
+      push: true,
+      bidAlerts: false,
+      outbidAlerts: false,
+      auctionUpdates: true,
+    },
+    currency: "USD",
+    language: "en",
+    timezone: "America/Los_Angeles",
+  },
+
+  stats: {
+    totalBids: 0,
+    wonAuctions: 0,
+    activeWatchlist: 0,
+    totalSpent: 0,
+    averageBid: 0,
+    successRate: 0,
+  },
+
+  wallet: {
+    balance: 0,
+    pendingPayments: 0,
+    availableCredit: 0,
+  },
+
+  verification: {
+    email: true,
+    phone: true,
+    identity: true,
+    paymentMethod: true,
+  },
+};
+
 // Auth reducer
 type AuthAction =
   | { type: 'LOGIN_START' }
@@ -164,10 +264,20 @@ export function AuthProvider({ children }: AuthProviderProps) {
       // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 1000));
 
-      // Mock validation
+      // Mock validation - support multiple test accounts
+      let user: User | null = null;
+
       if (credentials.email === 'john.doe@example.com' && credentials.password === 'demo123') {
+        user = mockUser;
+      } else if (credentials.email === 'moderator@autobid.com' && credentials.password === 'mod123') {
+        user = mockModerator;
+      } else if (credentials.email === 'admin@autobid.com' && credentials.password === 'admin123') {
+        user = mockAdmin;
+      }
+
+      if (user) {
         const authData = {
-          user: mockUser,
+          user,
           isAuthenticated: true,
         };
 
@@ -176,7 +286,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
           localStorage.setItem('auctionhub_auth', JSON.stringify(authData));
         }
 
-        dispatch({ type: 'LOGIN_SUCCESS', payload: mockUser });
+        dispatch({ type: 'LOGIN_SUCCESS', payload: user });
         return true;
       } else {
         dispatch({ type: 'LOGIN_ERROR', payload: 'Invalid email or password' });
@@ -313,8 +423,18 @@ export function useAuth(): AuthContextType {
   return context;
 }
 
-// Demo login helper for development
+// Demo login helpers for development
 export const demoLogin = {
-  email: 'john.doe@example.com',
-  password: 'demo123',
+  user: {
+    email: 'john.doe@example.com',
+    password: 'demo123',
+  },
+  moderator: {
+    email: 'moderator@autobid.com',
+    password: 'mod123',
+  },
+  admin: {
+    email: 'admin@autobid.com',
+    password: 'admin123',
+  },
 };

@@ -1,4 +1,6 @@
 // types/auth.ts
+export type UserRole = 'buyer' | 'seller' | 'both' | 'moderator' | 'admin';
+
 export interface User {
   id: string;
   email: string;
@@ -8,7 +10,7 @@ export interface User {
   phone?: string;
   isVerified: boolean;
   memberSince: string;
-  role: 'buyer' | 'seller' | 'both';
+  role: UserRole;
   
   // Profile completion
   profileCompletion: number;

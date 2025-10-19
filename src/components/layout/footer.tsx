@@ -158,7 +158,7 @@ const Footer = () => {
                 <span>Secure</span>
               </span>
               <span className="flex items-center space-x-1">
-                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                 <span>Trusted</span>
               </span>
               <span className="flex items-center space-x-1">

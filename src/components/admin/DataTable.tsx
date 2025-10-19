@@ -113,14 +113,14 @@ export function DataTable<T extends Record<string, any>>({
     <div className={cn('w-full', className)}>
       {/* Table */}
       <div className="overflow-x-auto border border-gray-200 dark:border-gray-800 rounded-lg">
-        <table className="w-full">
+        <table className="w-full min-w-max">
           <thead className="bg-gray-50 dark:bg-gray-800/50">
             <tr>
               {columns.map((column) => (
                 <th
                   key={column.key}
                   className={cn(
-                    'px-6 py-3 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider',
+                    'px-4 py-3 text-left text-xs font-medium text-gray-700 dark:text-gray-300 uppercase tracking-wider whitespace-nowrap',
                     column.sortable && 'cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 select-none',
                     column.className
                   )}
@@ -149,7 +149,7 @@ export function DataTable<T extends Record<string, any>>({
                   <td
                     key={column.key}
                     className={cn(
-                      'px-6 py-4 text-sm text-gray-900 dark:text-gray-100',
+                      'px-4 py-4 text-sm text-gray-900 dark:text-gray-100',
                       column.className
                     )}
                   >
@@ -166,9 +166,9 @@ export function DataTable<T extends Record<string, any>>({
 
       {/* Pagination */}
       {showPagination && totalPages > 1 && (
-        <div className="flex items-center justify-between px-4 py-3 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 sm:px-6">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 px-4 py-3 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 sm:px-6">
           <div className="flex items-center gap-2">
-            <p className="text-sm text-gray-700 dark:text-gray-300">
+            <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300">
               Showing{' '}
               <span className="font-medium">{(currentPage - 1) * pageSize + 1}</span>{' '}
               to{' '}
@@ -188,7 +188,7 @@ export function DataTable<T extends Record<string, any>>({
               <ChevronLeft className="w-4 h-4" />
             </button>
 
-            <div className="flex items-center gap-1">
+            <div className="hidden sm:flex items-center gap-1">
               {Array.from({ length: totalPages }, (_, i) => i + 1)
                 .filter((page) => {
                   // Show first page, last page, current page, and pages around current
@@ -222,6 +222,10 @@ export function DataTable<T extends Record<string, any>>({
                     </React.Fragment>
                   );
                 })}
+            </div>
+
+            <div className="sm:hidden text-sm text-gray-700 dark:text-gray-300">
+              Page {currentPage} of {totalPages}
             </div>
 
             <button

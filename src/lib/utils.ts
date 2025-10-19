@@ -20,9 +20,21 @@ export function formatNumber(num: number): string {
   return new Intl.NumberFormat('en-US').format(num);
 }
 
-export function timeAgo(date: Date): string {
+export function formatDate(date: Date | string | number): string {
+  const dateObj = new Date(date);
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  }).format(dateObj);
+}
+
+export function timeAgo(date: Date | string | number): string {
   const now = new Date();
-  const diffInSeconds = (now.getTime() - date.getTime()) / 1000;
+  const dateObj = new Date(date);
+  const diffInSeconds = (now.getTime() - dateObj.getTime()) / 1000;
   
   if (diffInSeconds < 60) {
     return 'just now';
@@ -38,9 +50,10 @@ export function timeAgo(date: Date): string {
   }
 }
 
-export function timeUntil(date: Date): string {
+export function timeUntil(date: Date | string | number): string {
   const now = new Date();
-  const diffInSeconds = (date.getTime() - now.getTime()) / 1000;
+  const dateObj = new Date(date);
+  const diffInSeconds = (dateObj.getTime() - now.getTime()) / 1000;
   
   if (diffInSeconds <= 0) {
     return 'Ended';

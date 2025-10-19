@@ -70,7 +70,7 @@ const BrowseAuctions: React.FC<BrowseAuctionsProps> = ({ onAuctionSelect }) => {
           <select 
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white min-w-[140px]"
+            className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 bg-white min-w-[140px]"
           >
             {categories.map(category => (
               <option key={category.value} value={category.value}>
@@ -81,7 +81,7 @@ const BrowseAuctions: React.FC<BrowseAuctionsProps> = ({ onAuctionSelect }) => {
           <select 
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white min-w-[160px]"
+            className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 bg-white min-w-[160px]"
           >
             {sortOptions.map(option => (
               <option key={option.value} value={option.value}>
@@ -102,7 +102,7 @@ const BrowseAuctions: React.FC<BrowseAuctionsProps> = ({ onAuctionSelect }) => {
         <div className="lg:hidden">
           <button 
             onClick={() => setShowMobileFilters(true)}
-            className="w-full sm:w-auto flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium transition-colors relative"
+            className="w-full sm:w-auto flex items-center justify-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 font-medium transition-colors relative"
           >
             <Filter size={16} className="mr-2" />
             Filters & Sort
@@ -117,11 +117,11 @@ const BrowseAuctions: React.FC<BrowseAuctionsProps> = ({ onAuctionSelect }) => {
 
       {/* Active Filters Display */}
       {(selectedCategory !== 'all' || sortBy !== 'ending-soon') && (
-        <div className="mb-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+        <div className="mb-4 p-3 bg-green-50 rounded-lg border border-green-200">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="text-sm font-medium text-blue-800">Active Filters:</span>
+            <span className="text-sm font-medium text-green-800">Active Filters:</span>
             {selectedCategory !== 'all' && (
-              <span className="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
+              <span className="inline-flex items-center px-2 py-1 bg-blue-100 text-green-800 text-xs rounded-full">
                 {categories.find(c => c.value === selectedCategory)?.label}
                 <button 
                   onClick={() => setSelectedCategory('all')}
@@ -132,7 +132,7 @@ const BrowseAuctions: React.FC<BrowseAuctionsProps> = ({ onAuctionSelect }) => {
               </span>
             )}
             {sortBy !== 'ending-soon' && (
-              <span className="inline-flex items-center px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
+              <span className="inline-flex items-center px-2 py-1 bg-blue-100 text-green-800 text-xs rounded-full">
                 {sortOptions.find(s => s.value === sortBy)?.label}
                 <button 
                   onClick={() => setSortBy('ending-soon')}
@@ -144,7 +144,7 @@ const BrowseAuctions: React.FC<BrowseAuctionsProps> = ({ onAuctionSelect }) => {
             )}
             <button 
               onClick={handleResetFilters}
-              className="text-xs text-blue-600 hover:text-blue-800 underline ml-2"
+              className="text-xs text-green-600 hover:text-green-800 underline ml-2"
             >
               Clear all
             </button>
@@ -158,7 +158,7 @@ const BrowseAuctions: React.FC<BrowseAuctionsProps> = ({ onAuctionSelect }) => {
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Price Range</label>
-              <select className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <select className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
                 <option>Any Price</option>
                 <option>Under $10,000</option>
                 <option>$10,000 - $25,000</option>
@@ -168,7 +168,7 @@ const BrowseAuctions: React.FC<BrowseAuctionsProps> = ({ onAuctionSelect }) => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Year</label>
-              <select className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <select className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
                 <option>Any Year</option>
                 <option>2020+</option>
                 <option>2015-2019</option>
@@ -178,7 +178,7 @@ const BrowseAuctions: React.FC<BrowseAuctionsProps> = ({ onAuctionSelect }) => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Mileage</label>
-              <select className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <select className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
                 <option>Any Mileage</option>
                 <option>Under 25,000</option>
                 <option>25,000 - 50,000</option>
@@ -188,7 +188,7 @@ const BrowseAuctions: React.FC<BrowseAuctionsProps> = ({ onAuctionSelect }) => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Ending Time</label>
-              <select className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <select className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
                 <option>Any Time</option>
                 <option>Next Hour</option>
                 <option>Next 6 Hours</option>
@@ -204,7 +204,7 @@ const BrowseAuctions: React.FC<BrowseAuctionsProps> = ({ onAuctionSelect }) => {
             >
               Cancel
             </button>
-            <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm font-medium">
+            <button className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 text-sm font-medium">
               Apply Filters
             </button>
           </div>
@@ -265,7 +265,7 @@ const BrowseAuctions: React.FC<BrowseAuctionsProps> = ({ onAuctionSelect }) => {
                         value={option.value}
                         checked={sortBy === option.value}
                         onChange={(e) => setSortBy(e.target.value)}
-                        className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                        className="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500"
                       />
                       <span className="ml-3 text-sm text-gray-700">{option.label}</span>
                     </label>
@@ -285,7 +285,7 @@ const BrowseAuctions: React.FC<BrowseAuctionsProps> = ({ onAuctionSelect }) => {
                         value={category.value}
                         checked={selectedCategory === category.value}
                         onChange={(e) => setSelectedCategory(e.target.value)}
-                        className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
+                        className="w-4 h-4 text-green-600 border-gray-300 focus:ring-green-500"
                       />
                       <span className="ml-3 text-sm text-gray-700">{category.label}</span>
                     </label>
@@ -297,7 +297,7 @@ const BrowseAuctions: React.FC<BrowseAuctionsProps> = ({ onAuctionSelect }) => {
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Price Range</label>
-                  <select className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <select className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
                     <option>Any Price</option>
                     <option>Under $10,000</option>
                     <option>$10,000 - $25,000</option>
@@ -308,7 +308,7 @@ const BrowseAuctions: React.FC<BrowseAuctionsProps> = ({ onAuctionSelect }) => {
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Year</label>
-                  <select className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <select className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
                     <option>Any Year</option>
                     <option>2020+</option>
                     <option>2015-2019</option>
@@ -319,7 +319,7 @@ const BrowseAuctions: React.FC<BrowseAuctionsProps> = ({ onAuctionSelect }) => {
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Ending Time</label>
-                  <select className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <select className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
                     <option>Any Time</option>
                     <option>Next Hour</option>
                     <option>Next 6 Hours</option>
@@ -341,7 +341,7 @@ const BrowseAuctions: React.FC<BrowseAuctionsProps> = ({ onAuctionSelect }) => {
                 </button>
                 <button 
                   onClick={handleApplyFilters}
-                  className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                  className="flex-1 px-4 py-2 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-colors"
                 >
                   Apply Filters
                 </button>

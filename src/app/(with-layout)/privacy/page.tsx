@@ -152,8 +152,8 @@ export default function PrivacyPage() {
       <section className="py-16 lg:py-24 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-6">
-              <Shield className="h-8 w-8 text-blue-600" />
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-6">
+              <Shield className="h-8 w-8 text-green-600" />
             </div>
             <h1 className="text-4xl lg:text-5xl font-bold text-black mb-4">
               Privacy Policy

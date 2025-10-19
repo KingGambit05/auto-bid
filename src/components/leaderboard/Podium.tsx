@@ -32,7 +32,7 @@ const Podium: React.FC<PodiumProps> = ({ data, category }) => {
                 className="w-20 h-20 bg-gray-300 rounded-full mx-auto object-cover border-4 border-white shadow-lg"
               />
               {userData.verified && (
-                <div className="absolute -top-1 -right-1 w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                <div className="absolute -top-1 -right-1 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
                   <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path 
                       fillRule="evenodd" 

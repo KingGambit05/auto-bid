@@ -58,7 +58,7 @@ const AuctionCard: React.FC<AuctionCardProps> = ({ auction, onClick }) => {
         
         <div className="flex space-x-2">
           <button 
-            className="flex-1 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm font-medium"
+            className="flex-1 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 text-sm font-medium"
             onClick={(e) => {
               e.stopPropagation();
               onClick();

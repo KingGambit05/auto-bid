@@ -145,7 +145,7 @@ export function ConfirmationModal({
   const variantStyles = {
     danger: 'bg-red-600 hover:bg-red-700 focus:ring-red-500',
     warning: 'bg-yellow-600 hover:bg-yellow-700 focus:ring-yellow-500',
-    info: 'bg-blue-600 hover:bg-blue-700 focus:ring-blue-500',
+    info: 'bg-green-600 hover:bg-green-700 focus:ring-green-500',
   };
 
   return (

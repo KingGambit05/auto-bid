@@ -7,26 +7,22 @@ import { usePathname } from 'next/navigation';
 import {
   LayoutDashboard,
   Users,
-  Shield,
   FileCheck,
   MessageSquare,
   Flag,
   Handshake,
-  Truck,
-  Package,
-  Scale,
-  DollarSign,
   Receipt,
   FileText,
   BarChart3,
   Settings,
   AlertTriangle,
   Activity,
-  Zap,
-  Lock,
   ChevronLeft,
   ChevronRight,
   LogOut,
+  TrendingUp,
+  Star,
+  DollarSign,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/hooks/useAuth';
@@ -68,6 +64,26 @@ const moderatorNavigation: NavSection[] = [
     ],
   },
   {
+    title: 'Listing Moderation',
+    items: [
+      {
+        label: 'Listings',
+        href: '/moderator/listings',
+        icon: FileText,
+      },
+    ],
+  },
+  {
+    title: 'Bidding',
+    items: [
+      {
+        label: 'Bid Monitoring',
+        href: '/moderator/bids',
+        icon: TrendingUp,
+      },
+    ],
+  },
+  {
     title: 'Support & Moderation',
     items: [
       {
@@ -77,10 +93,10 @@ const moderatorNavigation: NavSection[] = [
         badge: 5,
       },
       {
-        label: 'Content Moderation',
-        href: '/moderator/moderation',
-        icon: Flag,
-        badge: 3,
+        label: 'Review Moderation',
+        href: '/moderator/reviews',
+        icon: Star,
+        badge: 2,
       },
     ],
   },
@@ -91,22 +107,6 @@ const moderatorNavigation: NavSection[] = [
         label: 'Transaction Review',
         href: '/moderator/transactions',
         icon: Handshake,
-      },
-      {
-        label: 'Shipping Evidence',
-        href: '/moderator/shipping-evidence',
-        icon: Truck,
-        badge: 7,
-      },
-      {
-        label: 'Delivery Evidence',
-        href: '/moderator/delivery-evidence',
-        icon: Package,
-      },
-      {
-        label: 'Escalations',
-        href: '/moderator/escalations',
-        icon: AlertTriangle,
       },
     ],
   },
@@ -133,13 +133,7 @@ const adminNavigation: NavSection[] = [
         adminOnly: true,
       },
       {
-        label: 'Trust Scores',
-        href: '/admin/trust-scores',
-        icon: Shield,
-        adminOnly: true,
-      },
-      {
-        label: 'Fraud Review',
+        label: 'Fraud Detection',
         href: '/admin/fraud',
         icon: AlertTriangle,
         badge: 2,
@@ -174,9 +168,15 @@ const adminNavigation: NavSection[] = [
         adminOnly: true,
       },
       {
-        label: 'Active Monitor',
-        href: '/admin/listings/active',
+        label: 'Auction Control',
+        href: '/admin/auctions',
         icon: Activity,
+        adminOnly: true,
+      },
+      {
+        label: 'Bid Monitoring',
+        href: '/admin/bids',
+        icon: TrendingUp,
         adminOnly: true,
       },
     ],
@@ -190,45 +190,9 @@ const adminNavigation: NavSection[] = [
         icon: Handshake,
       },
       {
-        label: 'Escrow Management',
-        href: '/admin/escrow',
-        icon: DollarSign,
-        adminOnly: true,
-      },
-      {
         label: 'Payment Logs',
         href: '/admin/payments',
         icon: Receipt,
-        adminOnly: true,
-      },
-      {
-        label: 'Shipping Evidence',
-        href: '/admin/shipping-evidence',
-        icon: Truck,
-        badge: 7,
-      },
-      {
-        label: 'Delivery Evidence',
-        href: '/admin/delivery-evidence',
-        icon: Package,
-      },
-    ],
-  },
-  {
-    title: 'Disputes',
-    items: [
-      {
-        label: 'Dispute Dashboard',
-        href: '/admin/disputes',
-        icon: Scale,
-        badge: 8,
-        adminOnly: true,
-      },
-      {
-        label: 'Senior Panel',
-        href: '/admin/disputes/senior',
-        icon: Shield,
-        badge: 2,
         adminOnly: true,
       },
     ],
@@ -243,10 +207,21 @@ const adminNavigation: NavSection[] = [
         badge: 5,
       },
       {
-        label: 'Content Moderation',
-        href: '/admin/moderation',
-        icon: Flag,
-        badge: 3,
+        label: 'Review Moderation',
+        href: '/admin/reviews',
+        icon: Star,
+        badge: 2,
+      },
+    ],
+  },
+  {
+    title: 'Financial',
+    items: [
+      {
+        label: 'Fee Management',
+        href: '/admin/fees',
+        icon: DollarSign,
+        adminOnly: true,
       },
     ],
   },
@@ -254,15 +229,9 @@ const adminNavigation: NavSection[] = [
     title: 'Analytics & Reports',
     items: [
       {
-        label: 'Reports Dashboard',
-        href: '/admin/reports',
-        icon: BarChart3,
-        adminOnly: true,
-      },
-      {
-        label: 'Analytics Builder',
+        label: 'Analytics',
         href: '/admin/analytics',
-        icon: FileText,
+        icon: BarChart3,
         adminOnly: true,
       },
       {
@@ -276,30 +245,6 @@ const adminNavigation: NavSection[] = [
   {
     title: 'System',
     items: [
-      {
-        label: 'Alerts',
-        href: '/admin/alerts',
-        icon: AlertTriangle,
-        adminOnly: true,
-      },
-      {
-        label: 'System Health',
-        href: '/admin/system-health',
-        icon: Activity,
-        adminOnly: true,
-      },
-      {
-        label: 'Emergency Controls',
-        href: '/admin/emergency',
-        icon: Zap,
-        adminOnly: true,
-      },
-      {
-        label: 'Feature Flags',
-        href: '/admin/feature-flags',
-        icon: Lock,
-        adminOnly: true,
-      },
       {
         label: 'Settings',
         href: '/admin/settings',

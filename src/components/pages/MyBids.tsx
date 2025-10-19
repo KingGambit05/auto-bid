@@ -140,7 +140,7 @@ const MyBids: React.FC = () => {
     switch (status) {
       case 'winning': return 'bg-green-100 text-green-800';
       case 'outbid': return 'bg-red-100 text-red-800';
-      case 'won': return 'bg-blue-100 text-blue-800';
+      case 'won': return 'bg-blue-100 text-green-800';
       case 'lost': return 'bg-gray-100 text-gray-800';
       default: return 'bg-gray-100 text-gray-800';
     }
@@ -180,7 +180,7 @@ const MyBids: React.FC = () => {
         <select 
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
         >
           <option value="all">All Status</option>
           <option value="winning">Winning</option>
@@ -202,7 +202,7 @@ const MyBids: React.FC = () => {
               : `No bids with status: ${statusFilter}`
             }
           </p>
-          <button className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 font-medium">
+          <button className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 font-medium">
             Browse Auctions
           </button>
         </div>
@@ -296,14 +296,14 @@ const MyBids: React.FC = () => {
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                     <button 
                       onClick={() => handleViewAuction(bid.id)}
-                      className="text-blue-600 hover:text-blue-900"
+                      className="text-green-600 hover:text-blue-900"
                     >
                       View
                     </button>
                     {bid.status === 'outbid' && bid.timeLeft !== 'Ended' && (
                       <button 
                         onClick={() => handleBidAgain(bid.id)}
-                        className="text-blue-600 hover:text-blue-900 ml-3"
+                        className="text-green-600 hover:text-blue-900 ml-3"
                       >
                         Bid Again
                       </button>
@@ -335,7 +335,7 @@ const MyBids: React.FC = () => {
       {filteredBids.length > 0 && (
         <div className="mt-8 grid grid-cols-1 md:grid-cols-4 gap-6">
           <div className="bg-white p-6 rounded-lg border border-gray-200">
-            <div className="text-2xl font-bold text-blue-600">
+            <div className="text-2xl font-bold text-green-600">
               {mockUserBids.filter(bid => bid.status === 'winning').length}
             </div>
             <div className="text-sm text-gray-600">Currently Winning</div>
@@ -379,7 +379,7 @@ const MyBids: React.FC = () => {
                 <ol className="space-y-3">
                   <li className="flex items-start">
                     <div className="flex-shrink-0">
-                      <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">1</div>
+                      <div className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center text-green-600">1</div>
                     </div>
                     <div className="ml-3">
                       <div className="text-sm font-medium">Initiate Payment</div>
@@ -388,7 +388,7 @@ const MyBids: React.FC = () => {
                   </li>
                   <li className="flex items-start">
                     <div className="flex-shrink-0">
-                      <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">2</div>
+                      <div className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center text-green-600">2</div>
                     </div>
                     <div className="ml-3">
                       <div className="text-sm font-medium">Escrow Holds Funds</div>
@@ -397,7 +397,7 @@ const MyBids: React.FC = () => {
                   </li>
                   <li className="flex items-start">
                     <div className="flex-shrink-0">
-                      <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">3</div>
+                      <div className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center text-green-600">3</div>
                     </div>
                     <div className="ml-3">
                       <div className="text-sm font-medium">Transfer & Verification</div>
@@ -406,7 +406,7 @@ const MyBids: React.FC = () => {
                   </li>
                   <li className="flex items-start">
                     <div className="flex-shrink-0">
-                      <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">4</div>
+                      <div className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center text-green-600">4</div>
                     </div>
                     <div className="ml-3">
                       <div className="text-sm font-medium">Release Funds</div>

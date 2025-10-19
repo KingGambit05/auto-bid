@@ -54,7 +54,7 @@ const SellCarForm: React.FC = () => {
                 <select 
                   value={formData.make}
                   onChange={(e) => handleInputChange('make', e.target.value)}
-                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                   required
                 >
                   <option value="">Select Make</option>
@@ -77,7 +77,7 @@ const SellCarForm: React.FC = () => {
                   value={formData.model}
                   onChange={(e) => handleInputChange('model', e.target.value)}
                   placeholder="e.g., Camry, Civic, 320i"
-                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                   required
                 />
               </div>
@@ -86,7 +86,7 @@ const SellCarForm: React.FC = () => {
                 <select 
                   value={formData.year}
                   onChange={(e) => handleInputChange('year', parseInt(e.target.value))}
-                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                   required
                 >
                   {Array.from({length: 30}, (_, i) => new Date().getFullYear() - i).map(year => (
@@ -108,7 +108,7 @@ const SellCarForm: React.FC = () => {
                   value={formData.mileage}
                   onChange={(e) => handleInputChange('mileage', e.target.value)}
                   placeholder="e.g., 45,000"
-                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                   required
                 />
               </div>
@@ -117,7 +117,7 @@ const SellCarForm: React.FC = () => {
                 <select 
                   value={formData.condition}
                   onChange={(e) => handleInputChange('condition', e.target.value)}
-                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                   required
                 >
                   <option value="">Select Condition</option>
@@ -166,7 +166,7 @@ const SellCarForm: React.FC = () => {
               value={formData.description}
               onChange={(e) => handleInputChange('description', e.target.value)}
               rows={5}
-              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
               placeholder="Describe your vehicle's condition, maintenance history, and any notable features. Be honest and detailed to attract serious buyers."
               required
             />
@@ -198,7 +198,7 @@ const SellCarForm: React.FC = () => {
                 }}
               />
               <label htmlFor="photo-upload">
-                <span className="inline-block bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 cursor-pointer">
+                <span className="inline-block bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 cursor-pointer">
                   Select Photos
                 </span>
               </label>
@@ -226,7 +226,7 @@ const SellCarForm: React.FC = () => {
                   onChange={(e) => handleInputChange('startingBid', parseInt(e.target.value))}
                   placeholder="5000"
                   min="100"
-                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                   required
                 />
                 <p className="text-xs text-gray-500 mt-1">Minimum starting bid: $100</p>
@@ -241,7 +241,7 @@ const SellCarForm: React.FC = () => {
                   onChange={(e) => handleInputChange('reservePrice', parseInt(e.target.value))}
                   placeholder="8000"
                   min="0"
-                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                   required
                 />
                 <p className="text-xs text-gray-500 mt-1">Minimum price you&apos;ll accept</p>
@@ -253,7 +253,7 @@ const SellCarForm: React.FC = () => {
                 <select 
                   value={formData.auctionDuration}
                   onChange={(e) => handleInputChange('auctionDuration', parseInt(e.target.value))}
-                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                 >
                   <option value={3}>3 Days</option>
                   <option value={5}>5 Days</option>
@@ -294,7 +294,7 @@ const SellCarForm: React.FC = () => {
             </button>
             <button
               type="submit"
-              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium"
+              className="px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 font-medium"
             >
               Create Auction
             </button>

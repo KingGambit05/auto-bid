@@ -1,8 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(xargs:*)",
-      "Bash(tree:*)"
+      "Bash(git mv \"src/app/(admin)\" \"src/app/admin\")",
+      "Bash(dir \"C:\\Users\\nekol\\Desktop\\auto-bid\")",
+      "Bash(findstr /i \"tail\")",
+      "Bash(node replace-blue-green.js)",
+      "Bash(node replace-blue-green-extra.js)",
+      "Bash(node fix-modals.js)"
     ],
     "deny": [],
     "ask": []

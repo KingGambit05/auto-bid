@@ -5,10 +5,13 @@ import React, { ReactNode } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import { UserRole } from '@/types/auth';
+import { hasPermission, PERMISSIONS } from '@/utils/rbac';
 
 interface ProtectedRouteProps {
   children: ReactNode;
-  requiredRole?: 'buyer' | 'seller' | 'both';
+  allowedRoles?: UserRole[];
+  requiredPermission?: keyof typeof PERMISSIONS;
   requireVerification?: boolean;
   fallback?: ReactNode;
   redirectTo?: string;
@@ -16,7 +19,8 @@ interface ProtectedRouteProps {
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   children,
-  requiredRole,
+  allowedRoles,
+  requiredPermission,
   requireVerification = false,
   fallback,
   redirectTo = '/login'
@@ -27,8 +31,37 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
       router.push(redirectTo);
+      return;
     }
-  }, [isAuthenticated, isLoading, router, redirectTo]);
+
+    // Check role-based access
+    if (!isLoading && isAuthenticated && user) {
+      // If allowedRoles is specified, check if user's role is in the list
+      if (allowedRoles && !allowedRoles.includes(user.role)) {
+        // Redirect based on user's role
+        if (user.role === 'admin') {
+          router.push('/admin/dashboard');
+        } else if (user.role === 'moderator') {
+          router.push('/moderator/dashboard');
+        } else {
+          router.push('/main');
+        }
+        return;
+      }
+
+      // If requiredPermission is specified, check if user has the permission
+      if (requiredPermission && !hasPermission(user.role, requiredPermission)) {
+        // Redirect to appropriate dashboard
+        if (user.role === 'admin') {
+          router.push('/admin/dashboard');
+        } else if (user.role === 'moderator') {
+          router.push('/moderator/dashboard');
+        } else {
+          router.push('/main');
+        }
+      }
+    }
+  }, [isAuthenticated, isLoading, router, redirectTo, allowedRoles, requiredPermission, user]);
 
   // Show loading spinner while checking authentication
   if (isLoading) {
@@ -43,39 +76,18 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   }
 
   // Not authenticated
-  if (!isAuthenticated) {
+  if (!isAuthenticated || !user) {
     return fallback || null;
   }
 
   // Check role requirements
-  if (requiredRole && user) {
-    const hasRequiredRole = 
-      user.role === 'both' || 
-      user.role === requiredRole;
+  if (allowedRoles && !allowedRoles.includes(user.role)) {
+    return null;
+  }
 
-    if (!hasRequiredRole) {
-      return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
-          <div className="text-center max-w-md mx-auto px-4">
-            <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </div>
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">Access Restricted</h2>
-            <p className="text-gray-600 mb-4">
-              You need {requiredRole} privileges to access this page.
-            </p>
-            <button
-              onClick={() => router.back()}
-              className="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-200"
-            >
-              Go Back
-            </button>
-          </div>
-        </div>
-      );
-    }
+  // Check permission requirements
+  if (requiredPermission && !hasPermission(user.role, requiredPermission)) {
+    return null;
   }
 
   // Check verification requirements

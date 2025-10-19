@@ -110,7 +110,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, onPageChange }) =>
                     onClick={() => onPageChange(item.key as PageType)}
                     className={`px-3 py-2 text-sm font-medium transition-colors ${
                       currentPage === item.key 
-                        ? 'text-blue-600 border-b-2 border-blue-600' 
+                        ? 'text-green-600 border-b-2 border-blue-600' 
                         : 'text-gray-700 hover:text-gray-900'
                     }`}
                   >
@@ -131,7 +131,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, onPageChange }) =>
                   placeholder="Search cars..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-48 lg:w-64"
+                  className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent w-48 lg:w-64"
                 />
               </div> */}
               
@@ -153,7 +153,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, onPageChange }) =>
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   className="flex items-center space-x-2 p-2 rounded-lg hover:bg-gray-100 transition-colors"
                 >
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-medium">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-green-500 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-medium">
                     {user?.firstName ? user.firstName.charAt(0).toUpperCase() : 'U'}
                   </div>
                   <div className="hidden md:block text-left">
@@ -172,7 +172,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, onPageChange }) =>
                     {/* User Info */}
                     <div className="px-4 py-3 border-b border-gray-200">
                       <div className="flex items-center space-x-3">
-                        <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-medium">
+                        <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-purple-600 rounded-full flex items-center justify-center text-white font-medium">
                           {user?.firstName ? user.firstName.charAt(0).toUpperCase() : 'U'}
                         </div>
                         <div className="min-w-0 flex-1">
@@ -268,14 +268,14 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, onPageChange }) =>
               placeholder="Search cars..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
             />
           </div> */}
 
           {/* Mobile User Info - only show on mobile */}
           <div className="sm:hidden bg-gray-50 rounded-lg p-4 mb-4">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-medium">
+              <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-purple-600 rounded-full flex items-center justify-center text-white font-medium">
                 {user?.firstName ? user.firstName.charAt(0).toUpperCase() : 'U'}
               </div>
               <div className="min-w-0 flex-1">
@@ -293,7 +293,7 @@ const Navigation: React.FC<NavigationProps> = ({ currentPage, onPageChange }) =>
                 onClick={() => handleNavigation(item.key as PageType)}
                 className={`w-full flex items-center px-4 py-3 text-left text-sm font-medium rounded-lg transition-colors ${
                   currentPage === item.key
-                    ? 'bg-blue-50 text-blue-600 border-l-4 border-blue-600'
+                    ? 'bg-green-50 text-green-600 border-l-4 border-blue-600'
                     : 'text-gray-700 hover:bg-gray-100'
                 }`}
               >

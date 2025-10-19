@@ -16,7 +16,7 @@ const ListingAnalytics: React.FC<ListingAnalyticsProps> = ({ listingId, onBack }
   if (!listing) {
     return (
       <div className="max-w-3xl mx-auto p-4">
-        <button onClick={onBack} className="text-blue-600 mb-4 inline-flex items-center">
+        <button onClick={onBack} className="text-green-600 mb-4 inline-flex items-center">
           <ArrowLeft size={16} className="mr-2" /> Back
         </button>
         <div className="bg-white border border-gray-200 rounded-lg p-6 text-center">
@@ -28,7 +28,7 @@ const ListingAnalytics: React.FC<ListingAnalyticsProps> = ({ listingId, onBack }
 
   return (
     <div className="max-w-3xl mx-auto p-4">
-      <button onClick={onBack} className="text-blue-600 mb-4 inline-flex items-center">
+      <button onClick={onBack} className="text-green-600 mb-4 inline-flex items-center">
         <ArrowLeft size={16} className="mr-2" /> Back
       </button>
 

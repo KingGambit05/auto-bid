@@ -124,17 +124,10 @@ const GuestNavbar = () => {
             <div className="hidden lg:flex items-center space-x-3 xl:space-x-4">
               <Link
                 href="/login"
-                className="flex items-center px-4 xl:px-5 py-2 text-sm xl:text-base font-medium text-gray-600 hover:text-black hover:bg-gray-100 rounded-lg transition-colors duration-200"
-              >
-                <User className="h-4 w-4 mr-2" />
-                Sign In
-              </Link>
-              <Link
-                href="/register"
                 className="flex items-center px-4 xl:px-6 py-2 text-sm xl:text-base font-medium bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-200"
               >
-                Get Started
-                <ArrowRight className="h-4 w-4 ml-2" />
+                <User className="h-4 w-4 mr-2" />
+                Login as Admin/Moderator Demo
               </Link>
             </div>
 
@@ -187,19 +180,10 @@ const GuestNavbar = () => {
                 <Link
                   href="/login"
                   onClick={handleLinkClick}
-                  className="flex items-center justify-center w-full px-4 py-3 text-base font-medium text-gray-600 hover:text-black hover:bg-gray-50 rounded-lg border border-gray-300 transition-colors duration-200"
-                >
-                  <User className="h-5 w-5 mr-3" />
-                  Sign In to Your Account
-                </Link>
-                
-                <Link
-                  href="/register"
-                  onClick={handleLinkClick}
                   className="flex items-center justify-center w-full px-4 py-3 text-base font-medium bg-black text-white rounded-lg hover:bg-gray-800 transition-colors duration-200"
                 >
-                  Get Started - It&apos;s Free
-                  <ArrowRight className="h-5 w-5 ml-2" />
+                  <User className="h-5 w-5 mr-3" />
+                  Login as Admin/Moderator Demo
                 </Link>
               </div>
 
@@ -218,7 +202,7 @@ const GuestNavbar = () => {
                       Secure
                     </span>
                     <span className="flex items-center">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full mr-1"></div>
+                      <div className="w-2 h-2 bg-green-500 rounded-full mr-1"></div>
                       Trusted
                     </span>
                     <span className="flex items-center">

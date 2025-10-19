@@ -243,7 +243,7 @@ export default function HowItWorksPage() {
             </div>
             
             <div className="bg-white p-6 rounded-xl shadow-sm border hover:shadow-lg transition-shadow duration-300">
-              <Camera className="h-10 w-10 text-blue-500 mb-4" />
+              <Camera className="h-10 w-10 text-green-500 mb-4" />
               <h3 className="text-xl font-semibold text-black mb-3">HD Photo Gallery</h3>
               <p className="text-gray-600">Detailed high-resolution photos showing every angle and detail of each vehicle.</p>
             </div>
@@ -338,7 +338,7 @@ export default function HowItWorksPage() {
               <span>Free to join</span>
             </div>
             <div className="flex items-center">
-              <Shield className="h-4 w-4 mr-2 text-blue-400" />
+              <Shield className="h-4 w-4 mr-2 text-green-400" />
               <span>Fully protected</span>
             </div>
             <div className="flex items-center">

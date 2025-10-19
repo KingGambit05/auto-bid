@@ -1,0 +1,231 @@
+// lib/mockData/evidenceData.ts
+import { ShippingEvidence, DeliveryEvidence } from '@/types/admin';
+
+export const mockShippingEvidence: ShippingEvidence[] = [
+  {
+    id: 'ship-001',
+    transactionId: 'txn-001',
+    auctionTitle: '2018 Honda Civic LX - Low Miles',
+    submittedBy: 'seller',
+    submittedAt: '2024-01-15T14:00:00Z',
+    status: 'pending',
+    documents: {
+      vinPhoto: '/evidence/vin-001.jpg',
+      videoWalkthrough: '/evidence/walkthrough-001.mp4',
+      odometer: '/evidence/odometer-001.jpg',
+      exteriorPhotos: [
+        '/evidence/exterior-001-1.jpg',
+        '/evidence/exterior-001-2.jpg',
+        '/evidence/exterior-001-3.jpg',
+        '/evidence/exterior-001-4.jpg',
+      ],
+      interiorPhotos: [
+        '/evidence/interior-001-1.jpg',
+        '/evidence/interior-001-2.jpg',
+        '/evidence/interior-001-3.jpg',
+      ],
+    },
+    vehicleCondition: {
+      vin: '1HGBH41JXMN109186',
+      mileage: 45230,
+      conditionNotes: 'Vehicle is in excellent condition. Minor wear on driver seat. All functions working properly.',
+    },
+    gpsData: {
+      latitude: 42.3601,
+      longitude: -71.0589,
+      timestamp: '2024-01-15T14:00:00Z',
+    },
+  },
+  {
+    id: 'ship-002',
+    transactionId: 'txn-002',
+    auctionTitle: '2020 Toyota Camry SE - One Owner',
+    submittedBy: 'seller',
+    submittedAt: '2024-01-15T10:30:00Z',
+    status: 'pending',
+    documents: {
+      vinPhoto: '/evidence/vin-002.jpg',
+      videoWalkthrough: '/evidence/walkthrough-002.mp4',
+      odometer: '/evidence/odometer-002.jpg',
+      exteriorPhotos: [
+        '/evidence/exterior-002-1.jpg',
+        '/evidence/exterior-002-2.jpg',
+        '/evidence/exterior-002-3.jpg',
+        '/evidence/exterior-002-4.jpg',
+      ],
+      interiorPhotos: [
+        '/evidence/interior-002-1.jpg',
+        '/evidence/interior-002-2.jpg',
+      ],
+      damagePhotos: ['/evidence/damage-002-1.jpg'],
+    },
+    vehicleCondition: {
+      vin: '4T1B11HK5LU123456',
+      mileage: 32100,
+      conditionNotes: 'Vehicle in good condition overall.',
+      damageDescription: 'Small dent on rear bumper (see damage photos)',
+    },
+    gpsData: {
+      latitude: 30.2672,
+      longitude: -97.7431,
+      timestamp: '2024-01-15T10:30:00Z',
+    },
+  },
+  {
+    id: 'ship-003',
+    transactionId: 'txn-003',
+    auctionTitle: '2019 Ford F-150 XLT - Clean Title',
+    submittedBy: 'seller',
+    submittedAt: '2024-01-14T16:20:00Z',
+    status: 'approved',
+    reviewedBy: 'mod-456',
+    reviewedAt: '2024-01-14T18:00:00Z',
+    documents: {
+      vinPhoto: '/evidence/vin-003.jpg',
+      videoWalkthrough: '/evidence/walkthrough-003.mp4',
+      odometer: '/evidence/odometer-003.jpg',
+      exteriorPhotos: [
+        '/evidence/exterior-003-1.jpg',
+        '/evidence/exterior-003-2.jpg',
+        '/evidence/exterior-003-3.jpg',
+        '/evidence/exterior-003-4.jpg',
+      ],
+      interiorPhotos: [
+        '/evidence/interior-003-1.jpg',
+        '/evidence/interior-003-2.jpg',
+        '/evidence/interior-003-3.jpg',
+      ],
+    },
+    vehicleCondition: {
+      vin: '1FTEW1EP5KFC12345',
+      mileage: 58900,
+      conditionNotes: 'Truck is in great shape. Regular maintenance performed.',
+    },
+    gpsData: {
+      latitude: 39.7392,
+      longitude: -104.9903,
+      timestamp: '2024-01-14T16:20:00Z',
+    },
+  },
+  {
+    id: 'ship-004',
+    transactionId: 'txn-004',
+    auctionTitle: '2017 Nissan Altima S - Reliable',
+    submittedBy: 'seller',
+    submittedAt: '2024-01-13T12:00:00Z',
+    status: 'rejected',
+    reviewedBy: 'mod-456',
+    reviewedAt: '2024-01-13T14:30:00Z',
+    rejectionReason: 'VIN photo is blurry and unreadable. Odometer reading does not match listing. Please resubmit with clear photos.',
+    documents: {
+      vinPhoto: '/evidence/vin-004.jpg',
+      exteriorPhotos: ['/evidence/exterior-004-1.jpg', '/evidence/exterior-004-2.jpg'],
+      interiorPhotos: ['/evidence/interior-004-1.jpg'],
+    },
+    vehicleCondition: {
+      vin: '1N4AL3AP8HC123456',
+      mileage: 78000,
+      conditionNotes: 'Good running condition.',
+    },
+  },
+];
+
+export const mockDeliveryEvidence: DeliveryEvidence[] = [
+  {
+    id: 'deliv-001',
+    transactionId: 'txn-003',
+    auctionTitle: '2019 Ford F-150 XLT - Clean Title',
+    sellerEvidence: {
+      submittedAt: '2024-01-15T10:00:00Z',
+      photos: [
+        '/evidence/delivery-seller-001-1.jpg',
+        '/evidence/delivery-seller-001-2.jpg',
+        '/evidence/delivery-seller-001-3.jpg',
+      ],
+      signature: '/evidence/signature-seller-001.png',
+      notes: 'Vehicle delivered to buyer at agreed location. All keys and documents provided. Buyer inspected and accepted vehicle.',
+      location: '123 Buyer Street, Denver, CO 80202',
+    },
+    buyerEvidence: {
+      submittedAt: '2024-01-15T12:00:00Z',
+      photos: [
+        '/evidence/delivery-buyer-001-1.jpg',
+        '/evidence/delivery-buyer-001-2.jpg',
+      ],
+      signature: '/evidence/signature-buyer-001.png',
+      notes: 'Received vehicle in good condition. Everything matches the description.',
+      conditionReport: 'Vehicle condition matches listing. No issues found during inspection.',
+      issuesReported: false,
+    },
+    status: 'approved',
+    reviewedBy: 'mod-456',
+    reviewedAt: '2024-01-15T14:00:00Z',
+    comparisonNotes: 'Both parties confirm successful delivery. Evidence matches. Transaction approved for completion.',
+  },
+  {
+    id: 'deliv-002',
+    transactionId: 'txn-002',
+    auctionTitle: '2020 Toyota Camry SE - One Owner',
+    sellerEvidence: {
+      submittedAt: '2024-01-16T09:00:00Z',
+      photos: [
+        '/evidence/delivery-seller-002-1.jpg',
+        '/evidence/delivery-seller-002-2.jpg',
+      ],
+      signature: '/evidence/signature-seller-002.png',
+      notes: 'Vehicle delivered via professional transport service. All documentation included.',
+      location: '456 Oak Avenue, Austin, TX 78701',
+    },
+    buyerEvidence: {
+      submittedAt: '2024-01-16T15:00:00Z',
+      photos: [
+        '/evidence/delivery-buyer-002-1.jpg',
+        '/evidence/delivery-buyer-002-2.jpg',
+        '/evidence/delivery-buyer-002-3.jpg',
+      ],
+      signature: '/evidence/signature-buyer-002.png',
+      notes: 'Vehicle received but has damage not shown in listing photos.',
+      conditionReport: 'Found scratches on passenger door and small dent on hood that were not disclosed.',
+      issuesReported: true,
+      issues: [
+        'Scratches on passenger door (approximately 6 inches long)',
+        'Small dent on hood near windshield',
+        'Interior smells of smoke despite listing saying non-smoker vehicle',
+      ],
+    },
+    status: 'pending',
+    comparisonNotes: 'Discrepancy detected. Buyer reports undisclosed damage. Requires investigation.',
+  },
+  {
+    id: 'deliv-003',
+    transactionId: 'txn-005',
+    auctionTitle: '2021 Mazda CX-5 Touring',
+    sellerEvidence: {
+      submittedAt: '2024-01-14T14:00:00Z',
+      photos: [
+        '/evidence/delivery-seller-003-1.jpg',
+        '/evidence/delivery-seller-003-2.jpg',
+        '/evidence/delivery-seller-003-3.jpg',
+        '/evidence/delivery-seller-003-4.jpg',
+      ],
+      signature: '/evidence/signature-seller-003.png',
+      notes: 'Personal delivery. Buyer test drove and inspected thoroughly before acceptance.',
+      location: '789 Pine Road, Seattle, WA 98101',
+    },
+    buyerEvidence: {
+      submittedAt: '2024-01-14T16:30:00Z',
+      photos: [
+        '/evidence/delivery-buyer-003-1.jpg',
+        '/evidence/delivery-buyer-003-2.jpg',
+      ],
+      signature: '/evidence/signature-buyer-003.png',
+      notes: 'Very satisfied with purchase. Vehicle exactly as described.',
+      conditionReport: 'Excellent condition. Test drive went well. All features working perfectly.',
+      issuesReported: false,
+    },
+    status: 'approved',
+    reviewedBy: 'mod-456',
+    reviewedAt: '2024-01-14T18:00:00Z',
+    comparisonNotes: 'Smooth transaction. Both parties satisfied. Approved for payment release.',
+  },
+];

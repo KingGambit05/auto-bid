@@ -21,7 +21,7 @@ const MyListings: React.FC<MyListingsProps> = ({ onCreateNew, onViewListing, onM
     switch (status) {
       case 'active': return 'bg-green-100 text-green-800';
       case 'reserve-not-met': return 'bg-yellow-100 text-yellow-800';
-      case 'sold': return 'bg-blue-100 text-blue-800';
+      case 'sold': return 'bg-blue-100 text-green-800';
       case 'ended': return 'bg-gray-100 text-gray-800';
       default: return 'bg-gray-100 text-gray-800';
     }
@@ -31,7 +31,7 @@ const MyListings: React.FC<MyListingsProps> = ({ onCreateNew, onViewListing, onM
     switch (status) {
       case 'active': return <CheckCircle size={16} className="text-green-600" />;
       case 'reserve-not-met': return <AlertCircle size={16} className="text-yellow-600" />;
-      case 'sold': return <CheckCircle size={16} className="text-blue-600" />;
+      case 'sold': return <CheckCircle size={16} className="text-green-600" />;
       case 'ended': return <AlertCircle size={16} className="text-gray-600" />;
       default: return null;
     }
@@ -64,7 +64,7 @@ const MyListings: React.FC<MyListingsProps> = ({ onCreateNew, onViewListing, onM
     if (reserveMet && highInterest) {
       return { text: 'Performing well', color: 'text-green-600' };
     } else if (highInterest || manyBids) {
-      return { text: 'Good interest', color: 'text-blue-600' };
+      return { text: 'Good interest', color: 'text-green-600' };
     } else if (listing.views < 50) {
       return { text: 'Low visibility', color: 'text-red-600' };
     } else {
@@ -89,7 +89,7 @@ const MyListings: React.FC<MyListingsProps> = ({ onCreateNew, onViewListing, onM
           <select 
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
           >
             <option value="all">All Status</option>
             <option value="active">Active</option>
@@ -99,7 +99,7 @@ const MyListings: React.FC<MyListingsProps> = ({ onCreateNew, onViewListing, onM
           </select>
           <button 
             onClick={onCreateNew}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 font-medium transition-colors"
+            className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 font-medium transition-colors"
           >
             <Plus size={16} className="inline mr-2" />
             List New Car
@@ -117,7 +117,7 @@ const MyListings: React.FC<MyListingsProps> = ({ onCreateNew, onViewListing, onM
           </button>
           <button 
             onClick={onCreateNew}
-            className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 font-medium transition-colors"
+            className="flex-1 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 font-medium transition-colors"
           >
             <Plus size={16} className="inline mr-2" />
             List Car
@@ -135,7 +135,7 @@ const MyListings: React.FC<MyListingsProps> = ({ onCreateNew, onViewListing, onM
               setStatusFilter(e.target.value);
               setShowMobileFilter(false);
             }}
-            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
           >
             <option value="all">All Status</option>
             <option value="active">Active</option>
@@ -163,7 +163,7 @@ const MyListings: React.FC<MyListingsProps> = ({ onCreateNew, onViewListing, onM
           </p>
           <button 
             onClick={onCreateNew}
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 font-medium transition-colors"
+            className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 font-medium transition-colors"
           >
             List Your First Car
           </button>
@@ -257,7 +257,7 @@ const MyListings: React.FC<MyListingsProps> = ({ onCreateNew, onViewListing, onM
                           className={`h-2 rounded-full transition-all duration-300 ${
                             listing.timeLeft.includes('h') && !listing.timeLeft.includes('d')
                               ? 'bg-red-500' 
-                              : 'bg-blue-500'
+                              : 'bg-green-500'
                           }`}
                           style={{ 
                             width: listing.timeLeft.includes('d') 
@@ -284,7 +284,7 @@ const MyListings: React.FC<MyListingsProps> = ({ onCreateNew, onViewListing, onM
                       </button>
                       <button 
                         onClick={() => handleManageListing(listing.id)}
-                        className="flex-1 bg-blue-600 text-white px-3 py-2 rounded hover:bg-blue-700 text-xs sm:text-sm font-medium transition-colors"
+                        className="flex-1 bg-green-600 text-white px-3 py-2 rounded hover:bg-green-700 text-xs sm:text-sm font-medium transition-colors"
                       >
                         <Settings size={14} className="inline mr-1 sm:mr-2" />
                         Manage
@@ -314,7 +314,7 @@ const MyListings: React.FC<MyListingsProps> = ({ onCreateNew, onViewListing, onM
                 <div className="text-xs sm:text-sm text-gray-600">Active Listings</div>
               </div>
               <div className="text-center sm:text-left">
-                <div className="text-xl sm:text-2xl font-bold text-blue-600">
+                <div className="text-xl sm:text-2xl font-bold text-green-600">
                   {mockUserListings.reduce((sum, l) => sum + l.views, 0).toLocaleString()}
                 </div>
                 <div className="text-xs sm:text-sm text-gray-600">Total Views</div>

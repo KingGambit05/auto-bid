@@ -19,7 +19,7 @@ const AuctionDetail: React.FC<AuctionDetailProps> = ({ auction, onBack }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="text-center">
           <p className="text-gray-500">Auction not found</p>
-          <button onClick={onBack} className="mt-4 text-blue-600 hover:text-blue-800">
+          <button onClick={onBack} className="mt-4 text-green-600 hover:text-green-800">
             Back to Auctions
           </button>
         </div>
@@ -195,14 +195,14 @@ const AuctionDetail: React.FC<AuctionDetailProps> = ({ auction, onBack }) => {
                   value={bidAmount}
                   onChange={(e) => setBidAmount(e.target.value)}
                   placeholder={(auction.currentBid + 100).toString()}
-                  className="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg"
+                  className="w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent text-lg"
                 />
               </div>
             </div>
 
             <button 
               onClick={handlePlaceBid}
-              className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 font-medium mb-3 transition-colors"
+              className="w-full bg-green-600 text-white py-3 px-4 rounded-lg hover:bg-green-700 font-medium mb-3 transition-colors"
             >
               Place Bid
             </button>

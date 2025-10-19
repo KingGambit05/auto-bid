@@ -116,28 +116,28 @@ const Dashboard: React.FC = () => {
           title="Active Bids" 
           value={activeBids.length} 
           change="+2 from last week"
-          icon={<Gavel size={24} className="text-blue-600" />}
-          color="bg-blue-50"
+          icon={<Gavel size={24} className="text-green-600" />}
+          color="bg-green-50"
         />
         <StatCard 
           title="Watchlist" 
           value="12" 
           change="+3 this week"
-          icon={<Heart size={24} className="text-blue-600" />}
-          color="bg-blue-50"
+          icon={<Heart size={24} className="text-green-600" />}
+          color="bg-green-50"
         />
         <StatCard 
           title="My Listings" 
           value={activeListings.length} 
-          icon={<Car size={24} className="text-blue-600" />}
-          color="bg-blue-50"
+          icon={<Car size={24} className="text-green-600" />}
+          color="bg-green-50"
         />
         <StatCard 
           title="Won Auctions" 
           value={wonAuctions.length} 
           change="+1 this month"
-          icon={<Award size={24} className="text-blue-600" />}
-          color="bg-blue-50"
+          icon={<Award size={24} className="text-green-600" />}
+          color="bg-green-50"
         />
       </div>
 
@@ -145,21 +145,21 @@ const Dashboard: React.FC = () => {
       <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <button className="flex items-center p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-400 hover:bg-blue-50 transition-colors">
+          <button className="flex items-center p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-green-400 hover:bg-green-50 transition-colors">
             <Gavel size={20} className="text-gray-400 mr-3" />
             <div className="text-left">
               <p className="font-medium text-gray-900">Browse Auctions</p>
               <p className="text-sm text-gray-600">Find cars to bid on</p>
             </div>
           </button>
-          <button className="flex items-center p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-400 hover:bg-blue-50 transition-colors">
+          <button className="flex items-center p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-green-400 hover:bg-green-50 transition-colors">
             <Car size={20} className="text-gray-400 mr-3" />
             <div className="text-left">
               <p className="font-medium text-gray-900">Sell Your Car</p>
               <p className="text-sm text-gray-600">Create new auction</p>
             </div>
           </button>
-          <button className="flex items-center p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-400 hover:bg-blue-50 transition-colors">
+          <button className="flex items-center p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-green-400 hover:bg-green-50 transition-colors">
             <Heart size={20} className="text-gray-400 mr-3" />
             <div className="text-left">
               <p className="font-medium text-gray-900">Manage Watchlist</p>
@@ -214,7 +214,7 @@ const Dashboard: React.FC = () => {
               : bid.status === 'outbid' 
               ? 'bg-red-100 text-red-800'
               : bid.status === 'won'
-              ? 'bg-blue-100 text-blue-800'
+              ? 'bg-blue-100 text-green-800'
               : 'bg-gray-100 text-gray-800',
             timeInfo: bid.timeLeft
           }))}
@@ -246,7 +246,7 @@ const Dashboard: React.FC = () => {
             <p className="text-xs text-gray-500 mt-1">vs last month</p>
           </div>
           <div className="text-center p-4 bg-gray-50 rounded-lg">
-            <DollarSign size={24} className="text-blue-500 mx-auto mb-2" />
+            <DollarSign size={24} className="text-green-500 mx-auto mb-2" />
             <p className="text-2xl font-bold text-gray-900">$18.2K</p>
             <p className="text-sm text-gray-600">Average sale price</p>
             <p className="text-xs text-gray-500 mt-1">for your watched categories</p>
@@ -261,7 +261,7 @@ const Dashboard: React.FC = () => {
       </div>
 
       {/* Tips Section */}
-      <div className="mt-8 bg-blue-50 rounded-lg border border-blue-200 p-6">
+      <div className="mt-8 bg-green-50 rounded-lg border border-green-200 p-6">
         <h3 className="text-lg font-semibold text-blue-900 mb-4">💡 Tips for Success</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="bg-white p-4 rounded-lg">

@@ -5,7 +5,7 @@ import { UserRole } from '@/types/auth';
 /**
  * Permission levels for different roles
  */
-export const PERMISSIONS = {
+export const PERMISSIONS: Record<string, readonly UserRole[]> = {
   // User permissions
   VIEW_AUCTIONS: ['buyer', 'seller', 'both', 'moderator', 'admin'],
   CREATE_BID: ['buyer', 'both', 'moderator', 'admin'],

@@ -1,7 +1,7 @@
 // app/moderator/bids/page.tsx
 "use client";
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { TrendingUp, Search, AlertTriangle, DollarSign, RotateCcw, Eye, Flag } from 'lucide-react';
 import { DataTable, Modal, Column } from '@/components/admin';
@@ -66,7 +66,7 @@ const mockBids: Bid[] = [
   },
 ];
 
-export default function ModeratorBidMonitoringPage() {
+function BidMonitoringContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const auctionFilter = searchParams?.get('auction') || '';
@@ -400,5 +400,20 @@ export default function ModeratorBidMonitoringPage() {
         </Modal>
       )}
     </div>
+  );
+}
+
+export default function ModeratorBidMonitoringPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 dark:border-blue-400 mx-auto"></div>
+          <p className="mt-4 text-gray-600 dark:text-gray-400">Loading...</p>
+        </div>
+      </div>
+    }>
+      <BidMonitoringContent />
+    </Suspense>
   );
 }
